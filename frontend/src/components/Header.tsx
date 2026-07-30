@@ -92,7 +92,7 @@ export default function Header({ whatsappNumber }: HeaderProps) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
                 {itemCount > 0 && (
-                  <span className="absolute top-0.5 right-0.5 min-w-[18px] h-[18px] bg-brand-pink text-white text-[10px] font-bold rounded-full flex items-center justify-center px-1">
+                  <span className="absolute top-0.5 right-0.5 min-w-[18px] h-[18px] bg-white text-brand-black text-[10px] font-bold rounded-full flex items-center justify-center px-1">
                     {itemCount}
                   </span>
                 )}

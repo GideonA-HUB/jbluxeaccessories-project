@@ -25,6 +25,8 @@ interface SiteSettings {
   refund_policy: string;
   why_choose_title: string;
   why_choose_subtitle: string;
+  testimonials_title: string;
+  testimonials_subtitle: string;
   hero_eyebrow: string;
   hero_title: string;
   hero_subtitle: string;
@@ -501,6 +503,39 @@ export default function AdminSettings() {
               type="text"
               defaultValue={settings?.why_choose_subtitle}
               onChange={(e) => handleInputChange('why_choose_subtitle', e.target.value)}
+              className="w-full px-4 py-3 rounded-xl border border-brand-gray-200 focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 outline-none transition-all"
+            />
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Testimonials Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.45 }}
+        className="bg-white rounded-2xl p-6 shadow-lg border border-brand-gray-100"
+      >
+        <h3 className="text-lg font-semibold text-brand-black mb-4">Testimonials Section</h3>
+        <p className="text-sm text-brand-accent/60 mb-4">
+          Section title and subtitle. Individual testimonials are managed under Testimonials.
+        </p>
+        <div className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-brand-accent mb-2">Title</label>
+            <input
+              type="text"
+              defaultValue={settings?.testimonials_title}
+              onChange={(e) => handleInputChange('testimonials_title', e.target.value)}
+              className="w-full px-4 py-3 rounded-xl border border-brand-gray-200 focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 outline-none transition-all"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-brand-accent mb-2">Subtitle</label>
+            <input
+              type="text"
+              defaultValue={settings?.testimonials_subtitle}
+              onChange={(e) => handleInputChange('testimonials_subtitle', e.target.value)}
               className="w-full px-4 py-3 rounded-xl border border-brand-gray-200 focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 outline-none transition-all"
             />
           </div>

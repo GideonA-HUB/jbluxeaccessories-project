@@ -95,7 +95,7 @@ export default function SaleAnnouncementBanner() {
                 </span>
               )}
               {announcement.offer_extra && (
-                <span className="rounded-full border border-brand-pink/60 bg-brand-pink/20 px-3 py-1.5 text-[11px] sm:text-xs font-semibold text-brand-pink-light">
+                <span className="rounded-full border border-white/40 bg-white/10 px-3 py-1.5 text-[11px] font-semibold text-white sm:text-xs">
                   {announcement.offer_extra}
                 </span>
               )}
@@ -111,21 +111,21 @@ export default function SaleAnnouncementBanner() {
                   href={ctaPath}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-full bg-brand-pink px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-pink/30 transition hover:bg-brand-pink-light"
+                  className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-black shadow-lg transition hover:bg-brand-gray-100"
                 >
                   {announcement.cta_label || 'Shop Now'}
                 </a>
               ) : (
                 <Link
                   to={ctaPath}
-                  className="inline-flex items-center justify-center rounded-full bg-brand-pink px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-pink/30 transition hover:bg-brand-pink-light"
+                  className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-black shadow-lg transition hover:bg-brand-gray-100"
                 >
                   {announcement.cta_label || 'Shop Now'}
                 </Link>
               )}
               <Link
                 to="/terms"
-                className="text-xs sm:text-sm text-white/60 underline-offset-4 hover:text-brand-pink hover:underline"
+                className="text-xs text-white/60 underline-offset-4 hover:text-white hover:underline sm:text-sm"
               >
                 Read Terms of Service
               </Link>

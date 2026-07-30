@@ -6,9 +6,10 @@ export default {
     extend: {
       colors: {
         brand: {
-          pink: '#E62E72',
-          'pink-dark': '#801337',
-          'pink-light': '#F24785',
+          // Legacy token name kept for compatibility; values are JBLuxe black/white
+          pink: '#000000',
+          'pink-dark': '#0a0a0a',
+          'pink-light': '#333333',
           black: '#000000',
           accent: '#1A1A1A',
           white: '#FFFFFF',
@@ -42,11 +43,27 @@ export default {
       animation: {
         'spin-slow': 'spin 2s linear infinite',
         'fade-in': 'fadeIn 0.5s ease-out',
+        'fade-in-up': 'fadeInUp 0.7s ease-out forwards',
+        'scroll-horizontal': 'scroll-horizontal var(--scroll-duration, 40s) linear infinite',
+        'scroll-horizontal-reverse':
+          'scroll-horizontal-reverse var(--scroll-duration, 40s) linear infinite',
       },
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0', transform: 'translateY(10px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'scroll-horizontal': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        'scroll-horizontal-reverse': {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0)' },
         },
       },
     },

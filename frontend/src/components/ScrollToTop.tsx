@@ -20,7 +20,7 @@ function ScrollButton({
       whileTap={{ scale: 0.94 }}
       onClick={onClick}
       aria-label={label}
-      className="group relative flex h-9 w-9 items-center justify-center rounded-full bg-brand-pink text-white shadow-[0_8px_24px_rgba(230,46,114,0.35)] ring-1 ring-white/20 transition-colors hover:bg-brand-pink-dark"
+      className="group relative flex h-9 w-9 items-center justify-center rounded-full bg-brand-black text-white shadow-[0_8px_24px_rgba(0,0,0,0.35)] ring-1 ring-white/20 transition-colors hover:bg-brand-accent dark:bg-white dark:text-brand-black dark:hover:bg-brand-gray-100 dark:shadow-[0_8px_24px_rgba(0,0,0,0.45)]"
     >
       <svg
         className="h-4 w-4"

@@ -61,7 +61,7 @@ export default function AdminLayout() {
     document.documentElement.classList.remove('dark');
     document.documentElement.style.colorScheme = 'light';
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', '#E62E72');
+    if (meta) meta.setAttribute('content', '#000000');
 
     return () => {
       if (readPersistedTheme() === 'dark') {

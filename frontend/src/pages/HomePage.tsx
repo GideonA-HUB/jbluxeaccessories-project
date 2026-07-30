@@ -5,11 +5,11 @@ import SEO from '@/components/SEO';
 import PaginatedProductGrid from '@/components/PaginatedProductGrid';
 import SaleAnnouncementBanner from '@/components/SaleAnnouncementBanner';
 import CategoryCard from '@/components/CategoryCard';
-import SlidingTestimonial from '@/components/ui/sliding-testimonial';
+import CommunityTestimonialsSection from '@/components/CommunityTestimonialsSection';
 import WhyChooseSection from '@/components/WhyChooseSection';
 import HomeHero from '@/components/HomeHero';
-import { productsApi, siteApi } from '@/api';
-import type { Category, Product, Testimonial } from '@/types';
+import { productsApi } from '@/api';
+import type { Category, Product } from '@/types';
 
 export default function HomePage() {
   const [now, setNow] = useState(() => Date.now());
@@ -37,11 +37,6 @@ export default function HomePage() {
   const { data: flashSales = [] } = useQuery<Product[]>({
     queryKey: ['flash-sales'],
     queryFn: () => productsApi.flashSales(),
-  });
-
-  const { data: testimonials = [] } = useQuery<Testimonial[]>({
-    queryKey: ['testimonials'],
-    queryFn: () => siteApi.testimonials(),
   });
 
   const heroCategory = categories[0];
@@ -213,8 +208,8 @@ export default function HomePage() {
       {/* Why Choose — zoom parallax */}
       <WhyChooseSection />
 
-      {/* Testimonials */}
-      <SlidingTestimonial />
+      {/* Testimonials — community marquee */}
+      <CommunityTestimonialsSection />
     </>
   );
 }

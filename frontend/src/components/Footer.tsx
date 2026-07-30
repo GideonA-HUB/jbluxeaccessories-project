@@ -42,7 +42,7 @@ export default function Footer({
           <h3 className="text-xl font-display font-semibold mb-2">Join Our Luxury Circle</h3>
           <p className="text-white/60 text-sm mb-6">Exclusive access to new arrivals, promotions & launches</p>
           {subscribed ? (
-            <p className="text-brand-pink font-medium">Thank you for subscribing!</p>
+            <p className="font-medium text-white">Thank you for subscribing!</p>
           ) : (
             <form onSubmit={handleSubscribe} className="flex gap-2 max-w-md mx-auto">
               <input
@@ -50,13 +50,13 @@ export default function Footer({
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email address"
-                className="flex-1 px-4 py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/40 outline-none focus:border-brand-pink text-sm"
+                className="flex-1 rounded-full border border-white/20 bg-white/10 px-4 py-3 text-sm text-white outline-none placeholder:text-white/40 focus:border-white"
                 required
               />
               <button
                 type="submit"
                 disabled={loading}
-                className="btn-primary text-sm px-6 whitespace-nowrap"
+                className="whitespace-nowrap rounded-full bg-white px-6 py-3 text-sm font-medium text-brand-black transition hover:bg-brand-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 Subscribe
               </button>
@@ -74,24 +74,24 @@ export default function Footer({
           <div>
             <h4 className="font-semibold mb-3 text-sm">Shop</h4>
             <ul className="space-y-2 text-sm text-white/60">
-              <li><Link to="/shop" className="hover:text-brand-pink transition-colors">All Products</Link></li>
-              <li><Link to="/shop?filter=new-arrivals" className="hover:text-brand-pink transition-colors">New Arrivals</Link></li>
-              <li><Link to="/shop?filter=bestsellers" className="hover:text-brand-pink transition-colors">Best Sellers</Link></li>
+              <li><Link to="/shop" className="transition-colors hover:text-white">All Products</Link></li>
+              <li><Link to="/shop?filter=new-arrivals" className="transition-colors hover:text-white">New Arrivals</Link></li>
+              <li><Link to="/shop?filter=bestsellers" className="transition-colors hover:text-white">Best Sellers</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold mb-3 text-sm">Company</h4>
             <ul className="space-y-2 text-sm text-white/60">
-              <li><Link to="/about" className="hover:text-brand-pink transition-colors">About</Link></li>
-              <li><Link to="/contact" className="hover:text-brand-pink transition-colors">Contact</Link></li>
+              <li><Link to="/about" className="transition-colors hover:text-white">About</Link></li>
+              <li><Link to="/contact" className="transition-colors hover:text-white">Contact</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold mb-3 text-sm">Legal</h4>
             <ul className="space-y-2 text-sm text-white/60">
-              <li><Link to="/privacy" className="hover:text-brand-pink transition-colors">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="hover:text-brand-pink transition-colors">Terms of Service</Link></li>
-              <li><Link to="/refund" className="hover:text-brand-pink transition-colors">Refund Policy</Link></li>
+              <li><Link to="/privacy" className="transition-colors hover:text-white">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="transition-colors hover:text-white">Terms of Service</Link></li>
+              <li><Link to="/refund" className="transition-colors hover:text-white">Refund Policy</Link></li>
             </ul>
           </div>
         </div>
@@ -99,17 +99,17 @@ export default function Footer({
         {(instagramUrl || facebookUrl || twitterUrl) && (
           <div className="flex justify-center gap-4 mb-8">
             {instagramUrl && (
-              <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-brand-pink transition-colors">
+              <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="text-white/50 transition-colors hover:text-white">
                 Instagram
               </a>
             )}
             {facebookUrl && (
-              <a href={facebookUrl} target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-brand-pink transition-colors">
+              <a href={facebookUrl} target="_blank" rel="noopener noreferrer" className="text-white/50 transition-colors hover:text-white">
                 Facebook
               </a>
             )}
             {twitterUrl && (
-              <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-brand-pink transition-colors">
+              <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="text-white/50 transition-colors hover:text-white">
                 Twitter
               </a>
             )}

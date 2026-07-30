@@ -40,6 +40,14 @@ class SiteSettingsAdmin(admin.ModelAdmin):
             ),
             'description': 'Copy for the homepage hero section. Carousel images are managed under Hero Images.',
         }),
+        ('Why Choose Section', {
+            'fields': ('why_choose_title', 'why_choose_subtitle'),
+            'description': 'Title and subtitle for the homepage Why Choose section. Cards are managed under Why Choose Items.',
+        }),
+        ('Testimonials Section', {
+            'fields': ('testimonials_title', 'testimonials_subtitle'),
+            'description': 'Title and subtitle for the homepage testimonials marquee. Individual quotes are managed under Testimonials.',
+        }),
         ('Contact', {'fields': ('contact_email', 'contact_phone', 'whatsapp_number', 'address')}),
         ('Social Media', {'fields': ('instagram_url', 'facebook_url', 'twitter_url', 'tiktok_url', 'youtube_url')}),
         ('About Page', {

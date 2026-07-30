@@ -32,6 +32,7 @@ class SiteSettingsSerializer(serializers.ModelSerializer):
             'delivery_fee', 'currency', 'currency_symbol',
             'is_vat_inclusive', 'vat_rate',
             'why_choose_title', 'why_choose_subtitle',
+            'testimonials_title', 'testimonials_subtitle',
             'hero_eyebrow', 'hero_title', 'hero_subtitle',
             'hero_primary_cta_label', 'hero_primary_cta_url',
             'hero_secondary_cta_label', 'hero_secondary_cta_url',

@@ -135,6 +135,8 @@ export interface SiteSettings {
   refund_policy: string;
   why_choose_title?: string;
   why_choose_subtitle?: string;
+  testimonials_title?: string;
+  testimonials_subtitle?: string;
   hero_eyebrow?: string;
   hero_title?: string;
   hero_subtitle?: string;

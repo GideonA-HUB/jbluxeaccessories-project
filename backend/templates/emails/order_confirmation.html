@@ -11,7 +11,7 @@
       <td align="center">
         <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:620px;background:#ffffff;border-radius:20px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,0.08);">
           <tr>
-            <td style="background:linear-gradient(135deg,#801337 0%,#E62E72 50%,#801337 100%);padding:36px 32px;text-align:center;">
+            <td style="background:linear-gradient(135deg,#1A1A1A 0%,#000000 50%,#1A1A1A 100%);padding:36px 32px;text-align:center;">
               <img src="{{ logo_url }}" alt="{{ site_name }}" width="72" height="72" style="display:block;margin:0 auto 16px;border-radius:16px;background:#ffffff;padding:8px;">
               <p style="margin:0 0 8px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.85);">Luxury Fashion Accessories</p>
               <h1 style="margin:0;font-size:28px;line-height:1.2;color:#ffffff;font-weight:700;">Your Order Is Received</h1>
@@ -28,7 +28,7 @@
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin:0 0 24px;background:#fff7fb;border:1px solid #f5c2d9;border-radius:14px;">
                 <tr>
                   <td style="padding:18px 20px;">
-                    <p style="margin:0;font-size:14px;line-height:1.6;color:#801337;">
+                    <p style="margin:0;font-size:14px;line-height:1.6;color:#1A1A1A;">
                       <strong>Next step:</strong> complete your payment to confirm this order. Once payment is successful, you will receive another email with your transaction ID.
                     </p>
                   </td>
@@ -36,9 +36,9 @@
               </table>
               {% endif %}
 
-              <p style="margin:0 0 24px;font-size:22px;font-weight:700;color:#E62E72;">Order #{{ order.order_number }}</p>
+              <p style="margin:0 0 24px;font-size:22px;font-weight:700;color:#000000;">Order #{{ order.order_number }}</p>
 
-              <h2 style="margin:0 0 14px;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:#111111;border-bottom:2px solid #E62E72;padding-bottom:8px;">Order Summary</h2>
+              <h2 style="margin:0 0 14px;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:#111111;border-bottom:2px solid #000000;padding-bottom:8px;">Order Summary</h2>
               <p style="margin:0 0 8px;font-size:14px;color:#555555;"><strong>Date:</strong> {{ order.created_at|date:"F d, Y · g:i A" }}</p>
               <p style="margin:0 0 8px;font-size:14px;color:#555555;"><strong>Status:</strong> {{ order.get_status_display }}</p>
               <p style="margin:0 0 8px;font-size:14px;color:#555555;"><strong>Payment Method:</strong> {{ order.payment_method_display }}</p>
@@ -48,7 +48,7 @@
               <p style="margin:0 0 24px;font-size:14px;color:#555555;"><strong>Transaction ID:</strong> Pending payment</p>
               {% endif %}
 
-              <h2 style="margin:0 0 14px;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:#111111;border-bottom:2px solid #E62E72;padding-bottom:8px;">Delivery Details</h2>
+              <h2 style="margin:0 0 14px;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:#111111;border-bottom:2px solid #000000;padding-bottom:8px;">Delivery Details</h2>
               <p style="margin:0 0 8px;font-size:14px;color:#555555;"><strong>Full Name:</strong> {{ order.full_name }}</p>
               <p style="margin:0 0 8px;font-size:14px;color:#555555;"><strong>Email:</strong> {{ order.email }}</p>
               <p style="margin:0 0 8px;font-size:14px;color:#555555;"><strong>Phone:</strong> {{ order.phone }}</p>
@@ -60,7 +60,7 @@
               <p style="margin:0 0 24px;font-size:14px;color:#555555;"><strong>Order Notes:</strong> None</p>
               {% endif %}
 
-              <h2 style="margin:0 0 14px;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:#111111;border-bottom:2px solid #E62E72;padding-bottom:8px;">Items Purchased</h2>
+              <h2 style="margin:0 0 14px;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:#111111;border-bottom:2px solid #000000;padding-bottom:8px;">Items Purchased</h2>
               {% for item in order_items %}
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin:0 0 12px;background:#fafafa;border-radius:12px;">
                 <tr>
@@ -75,7 +75,7 @@
               </table>
               {% endfor %}
 
-              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-top:24px;background:linear-gradient(135deg,#801337,#E62E72);border-radius:16px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-top:24px;background:linear-gradient(135deg,#1A1A1A,#000000);border-radius:16px;">
                 <tr>
                   <td style="padding:22px 24px;color:#ffffff;">
                     <p style="margin:0 0 10px;display:flex;justify-content:space-between;font-size:14px;"><span>Subtotal</span><span>₦{{ order.subtotal }}</span></p>
@@ -89,7 +89,7 @@
 
               <table role="presentation" cellspacing="0" cellpadding="0" style="margin:28px auto 0;">
                 <tr>
-                  <td align="center" style="border-radius:999px;background:#E62E72;">
+                  <td align="center" style="border-radius:999px;background:#000000;">
                     <a href="{{ site_url }}/shop" style="display:inline-block;padding:14px 28px;color:#ffffff;text-decoration:none;font-size:14px;font-weight:700;">Continue Shopping</a>
                   </td>
                 </tr>

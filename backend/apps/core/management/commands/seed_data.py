@@ -60,6 +60,10 @@ class Command(BaseCommand):
             'rivaling international premium fashion houses.'
         )
         settings.why_choose_title = 'Why Choose JBLuxe Accessories'
+        settings.testimonials_title = 'What Our Clients Say'
+        settings.testimonials_subtitle = (
+            'Real stories from real customers who have experienced the JBLuxe Accessories difference'
+        )
         settings.why_choose_subtitle = 'Authentic luxury accessories, crafted for elegance'
         settings.hero_eyebrow = 'Luxury Fashion Accessories'
         settings.hero_title = 'Discover Your Perfect Style'

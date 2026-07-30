@@ -71,6 +71,18 @@ class SiteSettings(models.Model):
         blank=True,
         default='Authentic luxury accessories, crafted for elegance',
     )
+    testimonials_title = models.CharField(
+        max_length=255,
+        blank=True,
+        default='What Our Clients Say',
+        help_text='Homepage testimonials section title',
+    )
+    testimonials_subtitle = models.CharField(
+        max_length=500,
+        blank=True,
+        default='Real stories from real customers who have experienced the JBLuxe Accessories difference',
+        help_text='Homepage testimonials section subtitle',
+    )
     # Homepage hero (PulseFit-style) — editable in Django admin + owner dashboard
     hero_eyebrow = models.CharField(
         max_length=120,

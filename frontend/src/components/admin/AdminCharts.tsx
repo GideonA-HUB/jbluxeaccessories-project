@@ -1,5 +1,5 @@
-const PINK = '#E62E72';
-const PINK_DARK = '#801337';
+const PINK = '#000000';
+const PINK_DARK = '#333333';
 
 const STATUS_COLORS: Record<string, string> = {
   pending: '#f59e0b',

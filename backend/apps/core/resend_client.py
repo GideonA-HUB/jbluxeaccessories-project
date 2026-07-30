@@ -8,8 +8,8 @@ from apps.core.media import absolute_media_url
 
 logger = logging.getLogger(__name__)
 
-BRAND_PINK = '#E62E72'
-BRAND_PINK_DARK = '#801337'
+BRAND_PINK = '#000000'
+BRAND_PINK_DARK = '#1A1A1A'
 
 
 def get_logo_url():
