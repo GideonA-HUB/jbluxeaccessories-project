@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
             name='density',
             field=models.CharField(
                 blank=True,
-                help_text='Hair weight in grams, e.g. 50g, 100g, 200g, 250g, 300g',
+                help_text='Weight or size label, e.g. 50g, Small, Medium, Large',
                 max_length=50,
                 verbose_name='Grams',
             ),

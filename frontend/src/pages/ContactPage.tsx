@@ -35,7 +35,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <SEO title="Contact Us" description="Get in touch with CasseoHair" />
+      <SEO title="Contact Us" description="Get in touch with JBLuxe Accessories" />
       <div className="section-padding max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           <div className="lg:sticky lg:top-24">
@@ -50,7 +50,7 @@ export default function ContactPage() {
             </p>
 
             <div className="mt-6 rounded-luxury bg-gradient-to-br from-brand-pink-dark via-brand-pink to-brand-pink-dark p-6 text-white shadow-luxury">
-              <p className="text-sm font-medium">Luxury Hair, Delivered with Care</p>
+              <p className="text-sm font-medium">Luxury Accessories, Delivered with Care</p>
               <p className="text-white/85 text-sm mt-2">
                 Share what you’re looking for (style, length, lace type) and we’ll help you find the perfect match.
               </p>

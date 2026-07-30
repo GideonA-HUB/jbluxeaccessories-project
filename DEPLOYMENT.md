@@ -1,4 +1,4 @@
-# CasseoHair — Railway Deployment Guide
+# JBLuxe Accessories — Railway Deployment Guide
 
 Deploy frontend + backend as a **single Railway service** with PostgreSQL.
 
@@ -16,6 +16,7 @@ Railway Project
 - React build is served at all other routes (SPA)
 - Static assets at `/static/frontend/`
 - Django Admin at `/admin/`
+- Owner dashboard at `/dashboard/`
 
 ---
 
@@ -29,7 +30,7 @@ Ensure your repo is on GitHub (already done).
 
 1. Go to [railway.app](https://railway.app) → **New Project**
 2. Choose **Deploy from GitHub repo**
-3. Select your `casseohair_project` repository
+3. Select your `jbluxeaccessories` repository
 4. Railway detects `Dockerfile` and `railway.toml` automatically
 
 ---
@@ -55,11 +56,11 @@ In **Web Service → Variables**, add every variable from `.env.example`.
 | `SECRET_KEY` | Random 50+ char string | Generate: `python -c "import secrets; print(secrets.token_urlsafe(50))"` |
 | `DEBUG` | `False` | Never `True` in production |
 | `DJANGO_SETTINGS_MODULE` | `config.settings.production` | |
-| `ALLOWED_HOSTS` | `.railway.app,casseohairproject-production.up.railway.app` | `.railway.app` matches all Railway subdomains |
-| `SITE_URL` | `https://YOUR-APP.up.railway.app` | Update after first deploy |
+| `ALLOWED_HOSTS` | `.railway.app,jbluxeaccessories-project-production.up.railway.app,www.jbluxeaccessories.com,jbluxeaccessories.com` | `.railway.app` matches all Railway subdomains |
+| `SITE_URL` | `https://www.jbluxeaccessories.com` | Or Railway URL until custom domain is ready |
 | `FRONTEND_URL` | Same as `SITE_URL` | Used for payment callbacks |
-| `CORS_ALLOWED_ORIGINS` | Same as `SITE_URL` | |
-| `CSRF_TRUSTED_ORIGINS` | Same as `SITE_URL` | Required for Django Admin |
+| `CORS_ALLOWED_ORIGINS` | `https://www.jbluxeaccessories.com,https://jbluxeaccessories.com,https://jbluxeaccessories-project-production.up.railway.app` | |
+| `CSRF_TRUSTED_ORIGINS` | Same origins as CORS (with `https://`) | Required for Django Admin |
 | `RUN_SEED` | `true` | **First deploy only** — creates admin + sample data |
 
 ### Required for full functionality
@@ -82,7 +83,7 @@ In **Web Service → Variables**, add every variable from `.env.example`.
 
 | Variable | Default |
 |----------|---------|
-| `SITE_NAME` | `CasseoHair` |
+| `SITE_NAME` | `JBLuxe Accessories` |
 | `DELIVERY_FEE` | `4000` |
 | `CURRENCY` | `NGN` |
 
@@ -99,7 +100,7 @@ In **Web Service → Variables**, add every variable from `.env.example`.
 
 1. Railway builds from `Dockerfile` (frontend + backend)
 2. On start, the entrypoint:
-   - Runs database migrations
+   - Runs database migrations (including the rebrand data migration)
    - Collects static files
    - Starts Gunicorn on Railway's `$PORT`
 3. Gunicorn starts on Railway's `$PORT` (usually **8080**, not 8000 — this is automatic)
@@ -115,20 +116,22 @@ In **Web Service → Variables**, add every variable from `.env.example`.
 
 ## Step 6 — After First Deploy
 
-1. Copy your Railway public URL (e.g. `https://casseohair-production.up.railway.app`)
-2. Update these variables with the **exact URL**:
+1. Copy your Railway public URL (e.g. `https://jbluxeaccessories-project-production.up.railway.app`)
+2. Update these variables with the **exact URL** (and custom domain when ready):
    - `SITE_URL`
    - `FRONTEND_URL`
    - `CORS_ALLOWED_ORIGINS`
    - `CSRF_TRUSTED_ORIGINS`
+   - `SITE_NAME=JBLuxe Accessories`
+   - `DEFAULT_FROM_EMAIL=JBLuxe Accessories <orders@jbluxeaccessories.com>`
 3. **Remove** `RUN_SEED` or set to `false`
 4. Redeploy
 
 ### Default admin (created by seed on first deploy)
 
-- **URL:** `https://YOUR-APP.up.railway.app/admin/`
-- **Username:** `admin`
-- **Password:** `admin123!`
+- **URL:** `https://jbluxeaccessories-project-production.up.railway.app/admin/`
+- **Username:** from `ADMIN_USERNAME`
+- **Password:** from `ADMIN_PASSWORD`
 
 **Change this password immediately after first login.**
 
@@ -139,7 +142,7 @@ In **Web Service → Variables**, add every variable from `.env.example`.
 Set payment callback URLs in your Paystack/Flutterwave dashboard:
 
 ```
-https://YOUR-APP.up.railway.app/checkout/verify
+https://www.jbluxeaccessories.com/checkout/verify
 ```
 
 ---
@@ -147,13 +150,13 @@ https://YOUR-APP.up.railway.app/checkout/verify
 ## Step 8 — Configure Resend
 
 1. Verify your sending domain at [resend.com](https://resend.com)
-2. Set `DEFAULT_FROM_EMAIL` to an address on that domain (e.g. `orders@yourdomain.com`)
+2. Set `DEFAULT_FROM_EMAIL` to an address on that domain (e.g. `JBLuxe Accessories <orders@jbluxeaccessories.com>`)
 
 ---
 
 ## Step 9 — Upload Product Images
 
-1. Go to `https://YOUR-APP.up.railway.app/admin/`
+1. Go to `https://jbluxeaccessories-project-production.up.railway.app/admin/`
 2. Add products with images via Django Admin (uploads go to Cloudinary)
 3. Upload logo/favicon via **Site Configuration → Site Assets**
 
@@ -163,13 +166,14 @@ https://YOUR-APP.up.railway.app/checkout/verify
 
 | Service | URL |
 |---------|-----|
-| Storefront | `https://YOUR-APP.up.railway.app/` |
-| API | `https://YOUR-APP.up.railway.app/api/v1/` |
-| API Docs | `https://YOUR-APP.up.railway.app/api/docs/` |
-| Django Admin | `https://YOUR-APP.up.railway.app/admin/` |
-| Admin Dashboard | `https://YOUR-APP.up.railway.app/admin-dashboard/login` |
-| Health Check | `https://YOUR-APP.up.railway.app/api/v1/health/` |
-| Sitemap | `https://YOUR-APP.up.railway.app/sitemap.xml` |
+| Storefront | `https://www.jbluxeaccessories.com/` |
+| Railway URL | `https://jbluxeaccessories-project-production.up.railway.app/` |
+| API | `https://www.jbluxeaccessories.com/api/v1/` |
+| API Docs | `https://www.jbluxeaccessories.com/api/docs/` |
+| Django Admin | `https://jbluxeaccessories-project-production.up.railway.app/admin/` |
+| Owner Dashboard | `https://www.jbluxeaccessories.com/dashboard/login` |
+| Health Check | `https://www.jbluxeaccessories.com/api/v1/health/` |
+| Sitemap | `https://www.jbluxeaccessories.com/sitemap.xml` |
 
 ---
 
@@ -185,13 +189,9 @@ Fixed in code: `SECURE_SSL_REDIRECT` is disabled on Railway. Railway terminates 
 **Do not manually set port 8000** in Railway Settings → Networking. Railway injects `PORT` (often 8080). The app listens on `$PORT` automatically. The "Port 8000" label in the UI is misleading — leave networking on automatic.
 
 ### ALLOWED_HOSTS
-Your current value is fine:
+Recommended production value:
 ```
-localhost,127.0.0.1,.railway.app
-```
-You can optionally add your full domain:
-```
-casseohairproject-production.up.railway.app
+.railway.app,jbluxeaccessories-project-production.up.railway.app,www.jbluxeaccessories.com,jbluxeaccessories.com
 ```
 
 ### Build fails at `npm ci`
@@ -206,10 +206,10 @@ Check deploy logs. Common causes:
 Check logs for collectstatic errors. Redeploy after fixing `SECRET_KEY` and `DJANGO_SETTINGS_MODULE`.
 
 ### Django Admin login fails
-Ensure `CSRF_TRUSTED_ORIGINS` matches your exact Railway URL (with `https://`).
+Ensure `CSRF_TRUSTED_ORIGINS` matches your exact Railway URL and custom domain (with `https://`).
 
 ### Payment redirect fails
-Ensure `FRONTEND_URL` matches your live Railway URL exactly.
+Ensure `FRONTEND_URL` matches your live storefront URL exactly.
 
 ### Images not uploading or not displaying
 **CRITICAL**: Set all three `CLOUDINARY_*` variables in Railway:
@@ -229,8 +229,9 @@ After setting Cloudinary variables, redeploy your Railway service.
 
 ---
 
-## Custom Domain (Optional)
+## Custom Domain
 
-1. Railway → Service → **Settings** → **Networking** → **Custom Domain**
-2. Update `SITE_URL`, `FRONTEND_URL`, `CORS_ALLOWED_ORIGINS`, `CSRF_TRUSTED_ORIGINS` to your custom domain
+1. Railway → Service → **Settings** → **Networking** → **Custom Domain** → `www.jbluxeaccessories.com`
+2. Update `SITE_URL`, `FRONTEND_URL`, `CORS_ALLOWED_ORIGINS`, `CSRF_TRUSTED_ORIGINS`, `ALLOWED_HOSTS`
 3. Update Paystack/Flutterwave callback URLs
+4. Confirm DNS CNAME for `www` points at Railway

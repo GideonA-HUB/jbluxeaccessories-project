@@ -65,7 +65,7 @@ export default function AdminDashboard() {
         <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10 blur-2xl" />
         <div className="absolute -bottom-8 left-1/3 h-32 w-32 rounded-full bg-white/5 blur-xl" />
         <div className="relative">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">Luxury Hair Collection</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">Luxury Fashion Accessories</p>
           <h1 className="mt-2 font-display text-3xl font-bold md:text-4xl">Dashboard Overview</h1>
           <p className="mt-2 max-w-xl text-white/80">
             Welcome back. Here is a live snapshot of your store performance, orders, and subscribers.

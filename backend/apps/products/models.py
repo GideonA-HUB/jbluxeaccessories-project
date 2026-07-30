@@ -69,7 +69,7 @@ class Product(models.Model):
         'Grams',
         max_length=50,
         blank=True,
-        help_text='Hair weight in grams, e.g. 50g, 100g, 200g, 250g, 300g',
+        help_text='Weight or size label, e.g. 50g, Small, Medium, Large',
     )
     lace_type = models.CharField(max_length=30, choices=LACE_TYPE_CHOICES, blank=True)
     color = models.CharField(max_length=100, blank=True)

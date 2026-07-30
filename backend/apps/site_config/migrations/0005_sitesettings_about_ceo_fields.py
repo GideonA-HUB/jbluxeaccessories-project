@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
             name='about_subtitle',
             field=models.CharField(
                 blank=True,
-                default='Luxury Hair, Delivered with Care',
+                default='Luxury Accessories, Delivered with Care',
                 help_text='Subtitle shown below the About page heading',
                 max_length=255,
             ),

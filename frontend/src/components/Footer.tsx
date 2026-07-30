@@ -10,7 +10,7 @@ interface FooterProps {
 }
 
 export default function Footer({
-  siteName = 'CasseoHair',
+  siteName = 'JBLuxe Accessories',
   instagramUrl,
   facebookUrl,
   twitterUrl,
@@ -68,7 +68,7 @@ export default function Footer({
           <div>
             <img src={`${import.meta.env.BASE_URL}logo.png`} alt={siteName} className="h-8 mb-4 brightness-0 invert" />
             <p className="text-white/50 text-sm leading-relaxed">
-              Premium luxury wigs and hair extensions sourced globally.
+              Premium jewellery, bags, watches, shoes and fashion accessories for women and men.
             </p>
           </div>
           <div>

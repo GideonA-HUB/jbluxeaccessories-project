@@ -1,7 +1,7 @@
 export const DEFAULT_PRIVACY_POLICY = `Last updated: March 2026
 
 1. Introduction
-CasseoHair ("we", "us", "our") operates www.casseohair.com and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your data when you visit our website, create an account, place an order, or contact us.
+JBLuxe Accessories ("we", "us", "our") operates www.jbluxeaccessories.com and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your data when you visit our website, create an account, place an order, or contact us.
 
 2. Information We Collect
 We may collect the following categories of personal data:
@@ -32,7 +32,7 @@ We do not sell your personal data. We may share information with:
 We retain order and account records for as long as necessary to fulfil orders, resolve disputes, and meet legal and accounting requirements — typically up to seven (7) years for transaction records.
 
 7. Your Rights
-Subject to applicable law, you may request access, correction, deletion, or restriction of your personal data. To exercise these rights, contact us at casseohair@gmail.com.
+Subject to applicable law, you may request access, correction, deletion, or restriction of your personal data. To exercise these rights, contact us at contact@jbluxeaccessories.com.
 
 8. Cookies
 We use essential cookies for cart functionality, session management, and site security. You may disable non-essential cookies through your browser settings.
@@ -47,21 +47,21 @@ Our services are not directed to individuals under 18. We do not knowingly colle
 We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "Last updated" date.
 
 12. Contact Us
-For privacy-related enquiries: casseohair@gmail.com`;
+For privacy-related enquiries: contact@jbluxeaccessories.com`;
 
 export const DEFAULT_TERMS_OF_SERVICE = `Last updated: March 2026
 
 1. Agreement to Terms
-By accessing or using the CasseoHair website and purchasing our products, you agree to be bound by these Terms of Service. If you do not agree, please do not use our services.
+By accessing or using the JBLuxe Accessories website and purchasing our products, you agree to be bound by these Terms of Service. If you do not agree, please do not use our services.
 
-2. About CasseoHair
-CasseoHair is a luxury hair and wig e-commerce brand offering premium wigs, extensions, and related products sourced globally for customers in Nigeria and beyond.
+2. About JBLuxe Accessories
+JBLuxe Accessories is a luxury fashion accessories e-commerce brand offering premium jewellery, bags, watches, shoes, sunglasses, perfumes, and related lifestyle products for women and men in Nigeria and beyond.
 
 3. Eligibility
 You must be at least 18 years old and capable of entering into a binding contract to use our services and place orders.
 
 4. Products & Pricing
-• All product descriptions, images, and specifications are provided in good faith. Slight variations in colour or texture may occur due to lighting, screens, or natural hair characteristics.
+• All product descriptions, images, and specifications are provided in good faith. Slight variations in colour or finish may occur due to lighting, screens, or manufacturing.
 • Prices are listed in Nigerian Naira (NGN) unless otherwise stated.
 • We reserve the right to correct pricing errors and to modify prices without prior notice.
 • Promotional offers, flash sales, and discounts are subject to stated terms and availability.
@@ -78,19 +78,19 @@ You must be at least 18 years old and capable of entering into a binding contrac
 • We are not liable for delays caused by third-party couriers, customs, or events beyond our reasonable control.
 
 7. Product Care & Use
-Luxury hair products require proper care. We are not responsible for damage resulting from misuse, improper installation, chemical processing, or failure to follow care instructions.
+Luxury accessories require proper care. We are not responsible for damage resulting from misuse, improper handling, or failure to follow care instructions.
 
 8. Intellectual Property
-All website content, branding, logos, images, and text are owned by CasseoHair or our licensors. You may not reproduce, distribute, or exploit our content without written permission.
+All website content, branding, logos, images, and text are owned by JBLuxe Accessories or our licensors. You may not reproduce, distribute, or exploit our content without written permission.
 
 9. User Conduct
 You agree not to misuse our website, attempt unauthorised access, submit false information, or engage in fraudulent activity.
 
 10. Limitation of Liability
-To the fullest extent permitted by law, CasseoHair shall not be liable for indirect, incidental, special, or consequential damages arising from your use of our services or products. Our total liability for any claim shall not exceed the amount you paid for the relevant order.
+To the fullest extent permitted by law, JBLuxe Accessories shall not be liable for indirect, incidental, special, or consequential damages arising from your use of our services or products. Our total liability for any claim shall not exceed the amount you paid for the relevant order.
 
 11. Indemnification
-You agree to indemnify CasseoHair against claims arising from your breach of these Terms or misuse of our services.
+You agree to indemnify JBLuxe Accessories against claims arising from your breach of these Terms or misuse of our services.
 
 12. Governing Law
 These Terms are governed by the laws of the Federal Republic of Nigeria. Disputes shall be subject to the exclusive jurisdiction of Nigerian courts.
@@ -99,12 +99,12 @@ These Terms are governed by the laws of the Federal Republic of Nigeria. Dispute
 We may revise these Terms at any time. Continued use of the website after changes constitutes acceptance.
 
 14. Contact
-Questions about these Terms: casseohair@gmail.com`;
+Questions about these Terms: contact@jbluxeaccessories.com`;
 
 export const DEFAULT_REFUND_POLICY = `Last updated: March 2026
 
 1. Overview
-At CasseoHair, we are committed to your satisfaction. This Refund Policy explains when refunds may be issued, how to request one, and the conditions that apply.
+At JBLuxe Accessories, we are committed to your satisfaction. This Refund Policy explains when refunds may be issued, how to request one, and the conditions that apply.
 
 2. General Refund Eligibility
 Refunds are considered only when ALL of the following conditions are met:
@@ -119,19 +119,19 @@ No refund shall be processed unless the original transaction has been positively
 We may approve a refund where:
 • You received the wrong product (subject to photographic evidence and return of the item where applicable).
 • The product arrived significantly damaged due to shipping (reported within 48 hours of delivery with photos).
-• The product is materially not as described and unused, with original packaging and lace intact.
+• The product is materially not as described and unused, with original packaging intact.
 • We are unable to fulfil your order due to stock unavailability after payment.
 
 5. Non-Refundable Situations
 Refunds will NOT be issued for:
 • Change of mind after purchase.
-• Products that have been worn, cut, coloured, bleached, installed, or altered.
-• Incorrect size, length, or style selected by the customer where the product matches the order.
+• Products that have been worn, used, altered, or damaged by the customer.
+• Incorrect size, colour, or style selected by the customer where the product matches the order.
 • Delays caused by incorrect delivery information provided by the customer.
-• Minor variations in colour, curl pattern, or density inherent to natural/luxury hair products.
+• Minor variations in colour or finish inherent to luxury accessories.
 
 6. How to Request a Refund
-Contact us at casseohair@gmail.com or via WhatsApp with:
+Contact us at contact@jbluxeaccessories.com or via WhatsApp with:
 • Your full name and order number
 • Date of purchase and payment reference
 • Clear description of the issue
@@ -152,7 +152,7 @@ In some cases, a partial refund may be offered at our discretion — for example
 We encourage customers to contact us before initiating a chargeback. Unverified chargebacks may delay resolution and affect future orders.
 
 11. Contact
-Refund enquiries: casseohair@gmail.com | WhatsApp: +2348135380528`;
+Refund enquiries: contact@jbluxeaccessories.com | WhatsApp: +2348135380528`;
 
 export type PolicyType = 'privacy' | 'terms' | 'refund';
 
@@ -168,7 +168,7 @@ export const POLICY_META: Record<
   },
   terms: {
     title: 'Terms of Service',
-    subtitle: 'The terms governing your use of CasseoHair and our products.',
+    subtitle: 'The terms governing your use of JBLuxe Accessories and our products.',
     field: 'terms_of_service',
     defaultContent: DEFAULT_TERMS_OF_SERVICE,
   },

@@ -4,8 +4,8 @@ from django.db import migrations
 
 
 DEFAULT_MARQUEE = (
-    'CasseoHair presents Mid Year Preorder Sales — bringing factory prices to your doorstep '
-    'with 30% off website orders, 20% off WhatsApp orders, and free wigging. '
+    'JBLuxe Accessories presents Mid Year Preorder Sales — bringing factory prices to your doorstep '
+    'with 30% off website orders, 20% off WhatsApp orders, and free gift wrap. '
     'Running July 20th – 25th, 2026. Please read our Terms of Service before ordering.'
 )
 
@@ -20,7 +20,7 @@ def seed_mid_year_preorder(apps, schema_editor):
         headline='Bringing factory prices to your doorstep',
         offer_website='30% OFF WEBSITE ORDERS',
         offer_whatsapp='20% OFF WHATSAPP ORDERS',
-        offer_extra='FREE WIGGING',
+        offer_extra='FREE GIFT WRAP',
         marquee_text=DEFAULT_MARQUEE,
         cta_label='Shop the Sale',
         cta_url='/shop',

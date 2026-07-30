@@ -76,7 +76,7 @@ export default function Header({ whatsappNumber }: HeaderProps) {
             >
               <img
                 src={`${import.meta.env.BASE_URL}logo.png`}
-                alt="CasseoHair"
+                alt="JBLuxe Accessories"
                 className="h-9 w-auto sm:h-10 md:h-11 max-w-[min(48vw,200px)] object-contain"
               />
             </Link>

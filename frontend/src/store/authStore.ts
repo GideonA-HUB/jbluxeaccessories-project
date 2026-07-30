@@ -28,6 +28,6 @@ export const useAuthStore = create<AuthState>()(
         set({ token: null, refreshToken: null, isAuthenticated: false });
       },
     }),
-    { name: 'casseohair-auth' }
+    { name: 'jbluxe-auth' }
   )
 );

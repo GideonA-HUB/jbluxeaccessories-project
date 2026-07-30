@@ -13,14 +13,14 @@ class Migration(migrations.Migration):
             name='why_choose_subtitle',
             field=models.CharField(
                 blank=True,
-                default='Authentic luxury hair, crafted for elegance',
+                default='Authentic luxury accessories, crafted for elegance',
                 max_length=500,
             ),
         ),
         migrations.AddField(
             model_name='sitesettings',
             name='why_choose_title',
-            field=models.CharField(default='Why Choose CasseoHair', max_length=255),
+            field=models.CharField(default='Why Choose JBLuxe Accessories', max_length=255),
         ),
         migrations.CreateModel(
             name='WhyChooseItem',

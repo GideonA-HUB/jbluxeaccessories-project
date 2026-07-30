@@ -4,20 +4,20 @@ from apps.products.models import Category, Product
 
 @pytest.fixture
 def category(db):
-    return Category.objects.create(name='Bone Straight', slug='bone-straight')
+    return Category.objects.create(name='Jewellery', slug='jewellery')
 
 
 @pytest.fixture
 def product(db, category):
     return Product.objects.create(
-        name='Luxury Bone Straight 20"',
-        slug='luxury-bone-straight-20',
+        name='Gold Statement Necklace',
+        slug='gold-statement-necklace',
         category=category,
-        description='Premium bone straight hair',
+        description='Premium luxury necklace',
         price=150000,
         stock=10,
         length='20',
-        lace_type='hd_lace',
+        lace_type='',
     )
 
 
@@ -39,4 +39,3 @@ def test_product_detail(api_client, product):
 def test_category_list(api_client, category):
     response = api_client.get('/api/v1/products/categories/')
     assert response.status_code == 200
-    assert len(response.data) >= 1

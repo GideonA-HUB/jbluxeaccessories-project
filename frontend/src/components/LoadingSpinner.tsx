@@ -16,7 +16,7 @@ export default function LoadingSpinner({ fullScreen = true }: LoadingSpinnerProp
       >
         <img
           src={LOGO_SRC}
-          alt="CasseoHair"
+          alt="JBLuxe Accessories"
           className="w-full h-full object-contain"
         />
       </motion.div>

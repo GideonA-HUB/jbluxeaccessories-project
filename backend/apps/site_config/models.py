@@ -27,11 +27,11 @@ class SiteAsset(models.Model):
 
 
 class SiteSettings(models.Model):
-    site_name = models.CharField(max_length=100, default='CasseoHair')
-    tagline = models.CharField(max_length=255, default='Luxury Hair & Wig E-Commerce')
+    site_name = models.CharField(max_length=100, default='JBLuxe Accessories')
+    tagline = models.CharField(max_length=255, default='Luxury Fashion Accessories')
     meta_description = models.TextField(blank=True)
     meta_keywords = models.TextField(blank=True)
-    contact_email = models.EmailField(default='contact@casseohair.com')
+    contact_email = models.EmailField(default='contact@jbluxeaccessories.com')
     contact_phone = models.CharField(max_length=20, blank=True)
     whatsapp_number = models.CharField(max_length=20, blank=True)
     address = models.TextField(blank=True)
@@ -44,7 +44,7 @@ class SiteSettings(models.Model):
     about_subtitle = models.CharField(
         max_length=255,
         blank=True,
-        default='Luxury Hair, Delivered with Care',
+        default='Luxury Accessories, Delivered with Care',
         help_text='Subtitle shown below the About page heading',
     )
     about_content = models.TextField(blank=True)
@@ -65,11 +65,11 @@ class SiteSettings(models.Model):
     vat_rate = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     instagram_feed_enabled = models.BooleanField(default=False)
     instagram_access_token = models.CharField(max_length=500, blank=True)
-    why_choose_title = models.CharField(max_length=255, default='Why Choose CasseoHair')
+    why_choose_title = models.CharField(max_length=255, default='Why Choose JBLuxe Accessories')
     why_choose_subtitle = models.CharField(
         max_length=500,
         blank=True,
-        default='Authentic luxury hair, crafted for elegance',
+        default='Authentic luxury accessories, crafted for elegance',
     )
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -266,11 +266,11 @@ class SaleAnnouncement(models.Model):
     )
     offer_website = models.CharField(max_length=80, blank=True, default='30% OFF WEBSITE ORDERS')
     offer_whatsapp = models.CharField(max_length=80, blank=True, default='20% OFF WHATSAPP ORDERS')
-    offer_extra = models.CharField(max_length=80, blank=True, default='FREE WIGGING')
+    offer_extra = models.CharField(max_length=80, blank=True, default='FREE GIFT WRAP')
     marquee_text = models.TextField(
         default=(
-            'CasseoHair presents Mid Year Preorder Sales — bringing factory prices to your doorstep '
-            'with 30% off website orders, 20% off WhatsApp orders, and free wigging. '
+            'JBLuxe Accessories presents Mid Year Preorder Sales — bringing factory prices to your doorstep '
+            'with 30% off website orders, 20% off WhatsApp orders, and free gift wrap. '
             'Running July 20th – 25th, 2026. Please read our Terms of Service before ordering.'
         ),
         help_text='Continuous scrolling announcement text shown on the homepage banner.',

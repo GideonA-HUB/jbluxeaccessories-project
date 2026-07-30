@@ -12,12 +12,12 @@ export default function AboutPage() {
 
   if (isLoading) return <LoadingSpinner fullScreen={false} />;
 
-  const title = settings?.about_title || 'About CasseoHair';
-  const subtitle = settings?.about_subtitle || settings?.tagline || 'Luxury Hair, Delivered with Care';
+  const title = settings?.about_title || 'About JBLuxe Accessories';
+  const subtitle = settings?.about_subtitle || settings?.tagline || 'Luxury Accessories, Delivered with Care';
 
   return (
     <>
-      <SEO title="About Us" description="Discover the CasseoHair story — luxury hair redefined" />
+      <SEO title="About Us" description="Discover the JBLuxe Accessories story — luxury fashion accessories redefined" />
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-br from-brand-pink-dark via-brand-pink to-brand-pink-dark">
@@ -95,7 +95,7 @@ export default function AboutPage() {
               {settings?.brand_story ? (
                 <div>
                   <h3 className="text-lg font-display font-semibold text-brand-black mb-3">
-                    The CasseoHair Story
+                    The JBLuxe Accessories Story
                   </h3>
                   <p className="text-sm md:text-base text-brand-accent/70 leading-relaxed whitespace-pre-line">
                     {settings.brand_story}
@@ -103,8 +103,9 @@ export default function AboutPage() {
                 </div>
               ) : (
                 <p className="text-sm text-brand-accent/60 leading-relaxed">
-                  CasseoHair is a premium luxury hair brand specializing in rare, high-end, authentic wigs
-                  and hair extensions sourced globally for the discerning customer who demands excellence.
+                  JBLuxe Accessories is a premium luxury fashion brand specializing in jewellery, bags,
+                  watches, shoes, sunglasses, perfumes, and accessories for women and men — curated for
+                  the discerning customer who demands excellence.
                 </p>
               )}
             </div>
@@ -166,8 +167,8 @@ export default function AboutPage() {
           className="mt-10 md:mt-14 grid grid-cols-2 md:grid-cols-4 gap-4"
         >
           {[
-            { label: 'Authentic', desc: 'Genuine luxury hair' },
-            { label: 'Global', desc: 'Sourced worldwide' },
+            { label: 'Authentic', desc: 'Genuine luxury pieces' },
+            { label: 'Global', desc: 'Curated worldwide' },
             { label: 'Premium', desc: 'Finest craftsmanship' },
             { label: 'Trusted', desc: 'Delivered with care' },
           ].map((item) => (

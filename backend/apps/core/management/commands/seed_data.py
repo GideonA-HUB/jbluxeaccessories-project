@@ -15,7 +15,7 @@ from apps.site_config.models import SiteSettings, Testimonial, WhyChooseItem
 
 
 class Command(BaseCommand):
-    help = 'Seed initial data for CasseoHair'
+    help = 'Seed initial data for JBLuxe Accessories'
 
     def handle(self, *args, **options):
         # Always remove legacy hair-type categories that were auto-seeded in older deploys.
@@ -25,7 +25,7 @@ class Command(BaseCommand):
             admin_password = os.environ.get('ADMIN_INITIAL_PASSWORD', 'admin123!')
             User.objects.create_superuser(
                 username='admin',
-                email='admin@casseohair.com',
+                email='admin@jbluxeaccessories.com',
                 password=admin_password,
             )
             self.stdout.write(self.style.SUCCESS('Admin user created (username: admin)'))
@@ -33,27 +33,38 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.WARNING('Change the default admin password after first login.'))
 
         settings, _ = SiteSettings.objects.get_or_create(pk=1)
-        settings.site_name = 'CasseoHair'
-        settings.tagline = 'Luxury Hair & Wig E-Commerce'
-        settings.meta_description = 'Premium luxury wigs and hair extensions. Authentic bone straight, pixel curls, deep wave, HD lace wigs and more.'
+        settings.site_name = 'JBLuxe Accessories'
+        settings.tagline = 'Luxury Fashion Accessories'
+        settings.meta_description = (
+            'Premium jewellery, bags, watches, shoes, sunglasses, perfumes and fashion accessories '
+            'for women and men. Luxury lifestyle products delivered with care.'
+        )
         settings.delivery_fee = Decimal('4000')
         settings.currency = 'NGN'
         settings.currency_symbol = '₦'
         settings.is_vat_inclusive = False
-        settings.about_title = 'About CasseoHair'
+        settings.about_title = 'About JBLuxe Accessories'
+        settings.about_subtitle = 'Luxury Accessories, Delivered with Care'
         settings.brand_story = (
-            'CasseoHair was born from a passion for authentic luxury hair. '
-            'We source the finest wigs and extensions from Vietnam, Cambodia, India, and Burma, '
-            'bringing world-class quality to discerning clients across Nigeria and beyond.'
+            'JBLuxe Accessories was born from a passion for elevated everyday style. '
+            'We curate jewellery, designer bags, watches, shoes, sunglasses, perfumes, and '
+            'fashion accessories for women and men — bringing world-class quality to discerning '
+            'clients across Nigeria and beyond.'
         )
-        settings.mission = 'To deliver authentic luxury hair that empowers every woman to feel confident, elegant, and beautiful.'
-        settings.vision = 'To become Africa\'s most trusted luxury hair brand, rivaling international premium beauty houses.'
-        settings.why_choose_title = 'Why Choose CasseoHair'
-        settings.why_choose_subtitle = 'Authentic luxury hair, crafted for elegance'
-        settings.contact_email = 'casseohair@gmail.com'
+        settings.mission = (
+            'To deliver authentic luxury fashion accessories that empower every customer '
+            'to feel confident, elegant, and stylish.'
+        )
+        settings.vision = (
+            "To become Africa's most trusted luxury accessories brand, "
+            'rivaling international premium fashion houses.'
+        )
+        settings.why_choose_title = 'Why Choose JBLuxe Accessories'
+        settings.why_choose_subtitle = 'Authentic luxury accessories, crafted for elegance'
+        settings.contact_email = 'contact@jbluxeaccessories.com'
         settings.whatsapp_number = '+2348135380528'
-        settings.instagram_url = 'https://www.instagram.com/casseohair?igsh=dHgxaG5maWVucXZl'
-        settings.tiktok_url = 'https://www.tiktok.com/@casseo_hair?_r=1&_t=ZN-977lyQmMdao'
+        settings.instagram_url = ''
+        settings.tiktok_url = ''
         if not settings.privacy_policy:
             settings.privacy_policy = DEFAULT_PRIVACY_POLICY
         if not settings.terms_of_service:
@@ -74,18 +85,18 @@ class Command(BaseCommand):
         else:
             self.stdout.write(
                 'No products found. Add products in Django admin under your categories '
-                '(Straight hairs, Curly Hairs, Wavy/Bouncy Hairs).'
+                '(Jewellery, Bags, Watches, Shoes, and more).'
             )
 
         if not WhyChooseItem.objects.exists():
             why_choose_data = [
-                ('Authentic Luxury Hair', 'Genuine premium hair sourced from trusted global suppliers', 0),
-                ('Global Sourcing', 'Vietnamese, Cambodian, Indian & Burmese premium collections', 1),
-                ('Premium Lace', 'HD Lace, Transparent Lace & Swiss Lace craftsmanship', 2),
-                ('Long Lifespan', 'Built to last with proper care and premium construction', 3),
-                ('Effortless Elegance', 'Silky textures that move naturally with every step', 4),
+                ('Authentic Luxury Pieces', 'Genuine premium accessories sourced from trusted suppliers', 0),
+                ('Curated Collections', 'Jewellery, bags, watches, shoes, sunglasses & more', 1),
+                ('For Her & Him', 'Fashion accessories designed for women and men', 2),
+                ('Lasting Quality', 'Built to last with premium materials and craftsmanship', 3),
+                ('Effortless Elegance', 'Statement pieces that elevate every look', 4),
                 ('Fast Delivery', 'Swift nationwide delivery across Nigeria', 5),
-                ('Natural Look', 'Undetectable lace and flawless hairlines every time', 6),
+                ('Gift-Ready', 'Perfect luxury gifts for every occasion', 6),
             ]
             for title, description, order in why_choose_data:
                 WhyChooseItem.objects.create(
@@ -100,7 +111,10 @@ class Command(BaseCommand):
             Testimonial.objects.create(
                 name='Adaeze O.',
                 role='Verified Buyer',
-                content='The quality is absolutely stunning. My bone straight wig looks and feels incredibly natural. CasseoHair is the real deal!',
+                content=(
+                    'The quality is absolutely stunning. My new jewellery set looks and feels '
+                    'incredibly premium. JBLuxe Accessories is the real deal!'
+                ),
                 rating=5,
                 is_featured=True,
                 order=1,
@@ -108,7 +122,10 @@ class Command(BaseCommand):
             Testimonial.objects.create(
                 name='Chioma M.',
                 role='Loyal Customer',
-                content='I\'ve tried many brands but nothing compares. The HD lace melts perfectly and the hair is so soft. Worth every naira.',
+                content=(
+                    "I've tried many brands but nothing compares. The bags and watches are "
+                    'beautifully finished. Worth every naira.'
+                ),
                 rating=5,
                 is_featured=True,
                 order=2,

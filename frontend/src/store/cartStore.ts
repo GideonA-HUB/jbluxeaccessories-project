@@ -72,6 +72,6 @@ export const useCartStore = create<CartState>()(
         return get().items.reduce((sum, item) => sum + item.quantity, 0);
       },
     }),
-    { name: 'casseohair-cart' }
+    { name: 'jbluxe-cart' }
   )
 );

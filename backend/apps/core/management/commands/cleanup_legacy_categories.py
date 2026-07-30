@@ -6,7 +6,7 @@ from apps.products.models import Category
 
 
 class Command(BaseCommand):
-    help = 'Remove legacy seed hair-type categories (Bone Straight, Pixel Curls, etc.)'
+    help = 'Remove legacy seed categories from the previous niche (Bone Straight, Pixel Curls, etc.)'
 
     def handle(self, *args, **options):
         legacy_qs = Category.objects.filter(

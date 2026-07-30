@@ -27,7 +27,7 @@ export const useCurrencyStore = create<CurrencyState>()(
       setSettings: (settings) => set({ settings }),
     }),
     {
-      name: 'casseohair-currency',
+      name: 'jbluxe-currency',
       partialize: (state) => ({ displayCurrency: state.displayCurrency }),
     },
   ),

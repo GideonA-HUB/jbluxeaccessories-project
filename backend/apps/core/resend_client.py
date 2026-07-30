@@ -19,7 +19,7 @@ def get_logo_url():
     frontend_url = (
         getattr(settings, 'FRONTEND_URL', None)
         or getattr(settings, 'SITE_URL', None)
-        or 'https://www.casseohair.com'
+        or 'https://www.jbluxeaccessories.com'
     ).rstrip('/')
 
     for asset_type in ('logo', 'logo_light'):
@@ -43,17 +43,17 @@ def get_email_context(extra=None):
     site = SiteSettings.get_settings()
     site_url = (
         getattr(settings, 'FRONTEND_URL', None)
-        or getattr(settings, 'SITE_URL', 'https://www.casseohair.com')
+        or getattr(settings, 'SITE_URL', 'https://www.jbluxeaccessories.com')
     ).rstrip('/')
     ctx = {
-        'site_name': getattr(settings, 'SITE_NAME', 'CasseoHair'),
+        'site_name': site.site_name or getattr(settings, 'SITE_NAME', 'JBLuxe Accessories'),
         'site_url': site_url,
         'logo_url': get_logo_url(),
         'brand_pink': BRAND_PINK,
         'brand_pink_dark': BRAND_PINK_DARK,
-        'instagram_url': site.instagram_url or 'https://www.instagram.com/casseohair?igsh=dHgxaG5maWVucXZl',
-        'tiktok_url': site.tiktok_url or 'https://www.tiktok.com/@casseo_hair',
-        'contact_email': site.contact_email or 'casseohair@gmail.com',
+        'instagram_url': site.instagram_url or '',
+        'tiktok_url': site.tiktok_url or '',
+        'contact_email': site.contact_email or 'contact@jbluxeaccessories.com',
         'whatsapp_url': 'https://wa.me/2348135380528',
     }
     if extra:

@@ -63,7 +63,7 @@ export default function AdminLogin() {
   return (
     <>
       <SEO
-        title="Admin Login - CasseoHair"
+        title="Admin Login - JBLuxe Accessories"
         description="Admin dashboard login"
       />
       
@@ -80,9 +80,9 @@ export default function AdminLogin() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-4xl md:text-5xl font-display font-bold text-brand-pink mb-2"
+              className="text-3xl md:text-4xl font-display font-bold text-brand-pink mb-2"
             >
-              CasseoHair
+              JBLuxe Accessories
             </motion.h1>
             <motion.p
               initial={{ opacity: 0 }}

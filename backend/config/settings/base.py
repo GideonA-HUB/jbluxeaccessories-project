@@ -160,8 +160,8 @@ SIMPLE_JWT = {
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'CasseoHair API',
-    'DESCRIPTION': 'Luxury Hair & Wig E-Commerce Platform API',
+    'TITLE': 'JBLuxe Accessories API',
+    'DESCRIPTION': 'Luxury Fashion Accessories E-Commerce Platform API',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
 }
@@ -175,7 +175,7 @@ CORS_ALLOWED_ORIGINS = config(
 CORS_ALLOW_CREDENTIALS = True
 
 # Site Settings
-SITE_NAME = config('SITE_NAME', default='CasseoHair')
+SITE_NAME = config('SITE_NAME', default='JBLuxe Accessories')
 SITE_URL = config('SITE_URL', default='http://localhost:8000')
 FRONTEND_URL = config('FRONTEND_URL', default='http://localhost:5173')
 DELIVERY_FEE = config('DELIVERY_FEE', default=4000, cast=int)
@@ -190,14 +190,17 @@ FLUTTERWAVE_ENCRYPTION_KEY = config('FLUTTERWAVE_ENCRYPTION_KEY', default='')
 
 # Email — delivered via Resend API (apps.core.resend_client), not SMTP
 RESEND_API_KEY = config('RESEND_API_KEY', default='')
-DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='CasseoHair <orders@casseohair.com>')
-ADMIN_EMAIL = config('ADMIN_EMAIL', default='casseohair@gmail.com')
+DEFAULT_FROM_EMAIL = config(
+    'DEFAULT_FROM_EMAIL',
+    default='JBLuxe Accessories <orders@jbluxeaccessories.com>',
+)
+ADMIN_EMAIL = config('ADMIN_EMAIL', default='contact@jbluxeaccessories.com')
 EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 
 # Admin Dashboard Credentials
 ADMIN_USERNAME = config('ADMIN_USERNAME', default='admin')
 ADMIN_PASSWORD = config('ADMIN_PASSWORD', default='admin123')
-ADMIN_USER_EMAIL = config('ADMIN_USER_EMAIL', default='admin@casseohair.com')
+ADMIN_USER_EMAIL = config('ADMIN_USER_EMAIL', default='admin@jbluxeaccessories.com')
 
 # Security
 SECURE_BROWSER_XSS_FILTER = True

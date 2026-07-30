@@ -12,6 +12,10 @@ from drf_spectacular.views import (
 from apps.site_config.spa import SpaIndexView
 from apps.site_config.views import RobotsTxtView, SitemapView
 
+admin.site.site_header = 'JBLuxe Accessories Administration'
+admin.site.site_title = 'JBLuxe Accessories Admin'
+admin.site.index_title = 'JBLuxe Accessories'
+
 urlpatterns = [
     path('admin', RedirectView.as_view(url='/admin/', permanent=True)),
     path('admin/', admin.site.urls),

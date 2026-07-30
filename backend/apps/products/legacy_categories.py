@@ -1,4 +1,4 @@
-"""Legacy hair-type names seeded by early versions of seed_data — not top-level shop categories."""
+"""Legacy category names from the prior niche seed — removed by cleanup_legacy_categories."""
 
 LEGACY_CATEGORY_SLUGS = (
     'bone-straight',

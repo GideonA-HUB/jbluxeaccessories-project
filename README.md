@@ -1,6 +1,6 @@
-# CasseoHair
+# JBLuxe Accessories
 
-Luxury Hair & Wig E-Commerce Platform — premium wigs and hair extensions with Django REST API and React frontend.
+Luxury Fashion Accessories E-Commerce Platform — premium jewellery, bags, watches, shoes, sunglasses, perfumes and lifestyle accessories with Django REST API and React frontend.
 
 ## Tech Stack
 
@@ -91,10 +91,12 @@ Quick summary:
 
 Single service serves both API and React frontend on one domain.
 
+**Production:** [https://www.jbluxeaccessories.com](https://www.jbluxeaccessories.com) · [Railway](https://jbluxeaccessories-project-production.up.railway.app)
+
 ## Project Structure
 
 ```
-casseohair_project/
+jbluxeaccessories/
 ├── backend/          # Django API
 ├── frontend/         # React SPA
 ├── scripts/          # Entrypoint scripts
@@ -102,4 +104,3 @@ casseohair_project/
 ├── docker-compose.yml
 └── railway.toml
 ```
-End..

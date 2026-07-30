@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { siteApi } from '@/api';
 
 const DEFAULT_MARQUEE =
-  'CasseoHair presents Mid Year Preorder Sales — bringing factory prices to your doorstep with 30% off website orders, 20% off WhatsApp orders, and free wigging. Running July 20th – 25th, 2026. Please read our Terms of Service before ordering. · ';
+  'JBLuxe Accessories presents Mid Year Preorder Sales — bringing factory prices to your doorstep with 30% off website orders, 20% off WhatsApp orders, and free gift wrap. Running July 20th – 25th, 2026. Please read our Terms of Service before ordering. · ';
 
 function formatDateRange(start?: string | null, end?: string | null) {
   if (!start && !end) return 'July 20th – 25th, 2026';

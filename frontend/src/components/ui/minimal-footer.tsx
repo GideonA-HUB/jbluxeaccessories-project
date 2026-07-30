@@ -40,7 +40,7 @@ function EmailIcon({ className }: { className?: string }) {
 }
 
 export default function MinimalFooter({
-  siteName = 'CasseoHair',
+  siteName = 'JBLuxe Accessories',
   contactEmail,
   instagramUrl,
   facebookUrl,
@@ -92,16 +92,12 @@ export default function MinimalFooter({
   ];
 
   const socialLinks = [
-    {
-      href: resolvedInstagram,
-      label: 'Instagram',
-      icon: <InstagramIcon className="h-5 w-5" />,
-    },
-    {
-      href: resolvedTiktok,
-      label: 'TikTok',
-      icon: <TikTokIcon className="h-5 w-5" />,
-    },
+    ...(resolvedInstagram
+      ? [{ href: resolvedInstagram, label: 'Instagram', icon: <InstagramIcon className="h-5 w-5" /> }]
+      : []),
+    ...(resolvedTiktok
+      ? [{ href: resolvedTiktok, label: 'TikTok', icon: <TikTokIcon className="h-5 w-5" /> }]
+      : []),
     {
       href: `mailto:${resolvedEmail}`,
       label: 'Email',
@@ -161,7 +157,7 @@ export default function MinimalFooter({
               />
             </Link>
             <p className="text-sm text-white/50 leading-relaxed">
-              Premium luxury wigs and hair extensions sourced globally.
+              Premium jewellery, bags, watches, shoes and fashion accessories for women and men.
             </p>
           </div>
 

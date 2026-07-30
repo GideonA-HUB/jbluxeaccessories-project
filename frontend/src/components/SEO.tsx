@@ -9,9 +9,9 @@ interface SEOProps {
   schema?: Record<string, unknown>;
 }
 
-const SITE_NAME = 'CasseoHair';
+const SITE_NAME = 'JBLuxe Accessories';
 const DEFAULT_DESCRIPTION =
-  'Premium luxury wigs and hair extensions. Authentic bone straight, pixel curls, deep wave, HD lace wigs and more.';
+  'Premium jewellery, bags, watches, shoes, sunglasses, perfumes and fashion accessories for women and men. Luxury lifestyle products delivered with care.';
 
 export default function SEO({
   title,
@@ -21,7 +21,7 @@ export default function SEO({
   type = 'website',
   schema,
 }: SEOProps) {
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} - Luxury Hair & Wig E-Commerce`;
+  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} - Luxury Fashion Accessories`;
   const siteUrl = window.location.origin;
   const canonicalUrl = canonical || window.location.href;
   const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;

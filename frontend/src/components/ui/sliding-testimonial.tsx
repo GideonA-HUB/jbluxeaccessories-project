@@ -17,7 +17,7 @@ const defaultTestimonials: Testimonial[] = [
     id: 1,
     name: "Sarah Johnson",
     role: "Fashion Blogger",
-    content: "CasseoHair has completely transformed my look. The quality of their wigs is unmatched - I've never received so many compliments!",
+    content: "JBLuxe Accessories has completely elevated my style. The quality of their jewellery and bags is unmatched — I've never received so many compliments!",
     rating: 5,
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=64&h=64&q=80",
     company_logo: null,
@@ -26,7 +26,7 @@ const defaultTestimonials: Testimonial[] = [
     id: 2,
     name: "Amaka Okafor",
     role: "Business Owner",
-    content: "The customer service is exceptional. They helped me find the perfect wig for my wedding and I couldn't be happier with the result.",
+    content: "The customer service is exceptional. They helped me find the perfect watch and bag set for my anniversary and I couldn't be happier.",
     rating: 5,
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=64&h=64&q=80",
     company_logo: null,
@@ -34,8 +34,8 @@ const defaultTestimonials: Testimonial[] = [
   {
     id: 3,
     name: "Chioma Eze",
-    role: "Makeup Artist",
-    content: "I recommend CasseoHair to all my clients. The hair is premium quality and lasts so long. Worth every naira!",
+    role: "Stylist",
+    content: "I recommend JBLuxe Accessories to all my clients. The pieces are premium quality and last so long. Worth every naira!",
     rating: 5,
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=64&h=64&q=80",
     company_logo: null,
@@ -44,7 +44,7 @@ const defaultTestimonials: Testimonial[] = [
     id: 4,
     name: "Ngozi Adewale",
     role: "Influencer",
-    content: "The variety of textures and styles is amazing. From bone straight to deep wave, they have everything you need for any occasion.",
+    content: "The variety is amazing. From earrings and necklaces to sunglasses and sneakers, they have everything you need for any occasion.",
     rating: 5,
     image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-4.0.3&auto=format&fit=crop&w=64&h=64&q=80",
     company_logo: null,
@@ -53,7 +53,7 @@ const defaultTestimonials: Testimonial[] = [
     id: 5,
     name: "Tunde Bakare",
     role: "Photographer",
-    content: "I've worked with many hair brands, but CasseoHair stands out for their attention to detail and premium quality products.",
+    content: "I've worked with many accessory brands, but JBLuxe Accessories stands out for their attention to detail and premium quality products.",
     rating: 5,
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=64&h=64&q=80",
     company_logo: null,
@@ -61,8 +61,8 @@ const defaultTestimonials: Testimonial[] = [
   {
     id: 6,
     name: "Folake Adeyemi",
-    role: "Stylist",
-    content: "The HD lace wigs are virtually undetectable. My clients love how natural they look. CasseoHair is my go-to supplier.",
+    role: "Creative Director",
+    content: "Their designer bags and perfume selection are outstanding. My clients love how polished everything looks. JBLuxe is my go-to store.",
     rating: 5,
     image: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=64&h=64&q=80",
     company_logo: null,
@@ -102,7 +102,7 @@ export default function SlidingTestimonial() {
             What Our Clients Say
           </h2>
           <p className="text-base md:text-lg text-brand-accent/60 max-w-2xl mx-auto">
-            Real stories from real customers who have experienced the CasseoHair difference
+            Real stories from real customers who have experienced the JBLuxe Accessories difference
           </p>
         </div>
 

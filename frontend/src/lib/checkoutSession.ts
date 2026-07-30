@@ -1,5 +1,5 @@
-const DRAFT_KEY = 'casseohair-checkout-draft';
-const PENDING_ORDER_KEY = 'casseohair-pending-order';
+const DRAFT_KEY = 'jbluxe-checkout-draft';
+const PENDING_ORDER_KEY = 'jbluxe-pending-order';
 
 export function saveCheckoutDraft<T extends object>(data: T) {
   try {

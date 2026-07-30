@@ -66,7 +66,7 @@ export default function ShopPage() {
 
   const description = categoryData?.description
     ? categoryData.description
-    : `Browse ${title.toLowerCase()} at CasseoHair`;
+    : `Browse ${title.toLowerCase()} at JBLuxe Accessories`;
 
   return (
     <>

@@ -5,7 +5,7 @@ export type Theme = 'light' | 'dark';
 
 export function readPersistedTheme(): Theme {
   try {
-    const raw = localStorage.getItem('casseohair-theme');
+    const raw = localStorage.getItem('jbluxe-theme');
     if (!raw) return 'light';
     if (raw === 'dark' || raw === 'light') return raw;
     const parsed = JSON.parse(raw) as { state?: { theme?: Theme } };
@@ -57,7 +57,7 @@ export const useThemeStore = create<ThemeState>()(
       },
     }),
     {
-      name: 'casseohair-theme',
+      name: 'jbluxe-theme',
       onRehydrateStorage: () => (state) => {
         if (state) applyTheme(state.theme);
       },

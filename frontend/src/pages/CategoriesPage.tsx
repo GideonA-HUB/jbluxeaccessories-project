@@ -16,8 +16,8 @@ export default function CategoriesPage() {
   return (
     <>
       <SEO
-        title="Hair Categories"
-        description="Browse CasseoHair by texture — straight, curly, and wavy/bouncy luxury collections."
+        title="Shop Categories"
+        description="Browse JBLuxe Accessories by category — jewellery, bags, watches, shoes, sunglasses, and more."
       />
 
       <div className="section-padding max-w-7xl mx-auto">
@@ -33,14 +33,14 @@ export default function CategoriesPage() {
           />
           <div className="relative text-center">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-white/90 mb-3">
-              Shop by Texture
+              Shop by Category
             </p>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold text-white mb-4">
-              Hair Categories
+              Fashion Categories
             </h1>
             <p className="text-white/85 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
-              Explore our luxury collections by hair type — straight, curly, and wavy/bouncy styles
-              crafted for elegance.
+              Explore our luxury collections — jewellery, bags, watches, shoes, sunglasses,
+              perfumes, and accessories for women and men.
             </p>
           </div>
         </motion.div>

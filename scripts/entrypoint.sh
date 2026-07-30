@@ -3,7 +3,7 @@ set -e
 
 export DJANGO_SETTINGS_MODULE="${DJANGO_SETTINGS_MODULE:-config.settings.production}"
 
-echo "=== CasseoHair Deploy ==="
+echo "=== JBLuxe Accessories Deploy ==="
 python -c "
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.production')
