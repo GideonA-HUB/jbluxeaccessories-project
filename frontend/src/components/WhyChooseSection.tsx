@@ -1,64 +1,73 @@
 import { useQuery } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
-import { cn } from '@/lib/utils';
-import { ZoomParallax, type ParallaxItem } from '@/components/ui/zoom-parallax';
+import FeatureCarousel, {
+  type FeatureCarouselItem,
+} from '@/components/ui/feature-carousel';
 import { siteApi } from '@/api';
 import type { WhyChooseItem } from '@/types';
 
-/** Stock HD fallbacks when admin has not uploaded an image yet */
-const FALLBACK_IMAGES: ParallaxItem[] = [
+const FALLBACK_FEATURES: FeatureCarouselItem[] = [
   {
-    src: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1280&h=720&fit=crop&auto=format&q=80',
-    alt: 'Luxury jewellery',
-    title: 'Authentic Luxury Pieces',
-    description: 'Genuine premium accessories sourced from trusted suppliers',
+    id: 'authentic',
+    label: 'Authentic Luxury Pieces',
+    description: 'Genuine premium accessories sourced from trusted suppliers.',
+    image:
+      'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&h=1500&fit=crop&auto=format&q=80',
   },
   {
-    src: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=1280&h=720&fit=crop&auto=format&q=80',
-    alt: 'Designer bags',
-    title: 'Curated Collections',
-    description: 'Jewellery, bags, watches, shoes, sunglasses & more',
+    id: 'curated',
+    label: 'Curated Collections',
+    description: 'Jewellery, bags, watches, shoes, sunglasses & more.',
+    image:
+      'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=1200&h=1500&fit=crop&auto=format&q=80',
   },
   {
-    src: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&h=800&fit=crop&auto=format&q=80',
-    alt: 'Luxury watch',
-    title: 'For Her & Him',
-    description: 'Fashion accessories designed for women and men',
+    id: 'her-him',
+    label: 'For Her & Him',
+    description: 'Fashion accessories designed for women and men.',
+    image:
+      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200&h=1500&fit=crop&auto=format&q=80',
   },
   {
-    src: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=1280&h=720&fit=crop&auto=format&q=80',
-    alt: 'Premium shoes',
-    title: 'Lasting Quality',
-    description: 'Built to last with premium materials and craftsmanship',
+    id: 'quality',
+    label: 'Lasting Quality',
+    description: 'Built to last with premium materials and craftsmanship.',
+    image:
+      'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=1200&h=1500&fit=crop&auto=format&q=80',
   },
   {
-    src: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800&h=800&fit=crop&auto=format&q=80',
-    alt: 'Sunglasses',
-    title: 'Effortless Elegance',
-    description: 'Statement pieces that elevate every look',
+    id: 'elegance',
+    label: 'Effortless Elegance',
+    description: 'Statement pieces that elevate every look.',
+    image:
+      'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=1200&h=1500&fit=crop&auto=format&q=80',
   },
   {
-    src: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=1280&h=720&fit=crop&auto=format&q=80',
-    alt: 'Fast delivery',
-    title: 'Fast Delivery',
-    description: 'Swift nationwide delivery across Nigeria',
+    id: 'delivery',
+    label: 'Fast Delivery',
+    description: 'Swift nationwide delivery across Nigeria.',
+    image:
+      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=1200&h=1500&fit=crop&auto=format&q=80',
   },
   {
-    src: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=1280&h=720&fit=crop&auto=format&q=80',
-    alt: 'Gift packaging',
-    title: 'Gift-Ready',
-    description: 'Perfect luxury gifts for every occasion',
+    id: 'gifts',
+    label: 'Gift-Ready',
+    description: 'Perfect luxury gifts for every occasion.',
+    image:
+      'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=1200&h=1500&fit=crop&auto=format&q=80',
   },
 ];
 
-function toParallaxItems(items: WhyChooseItem[]): ParallaxItem[] {
-  if (!items.length) return FALLBACK_IMAGES;
+function toFeatures(items: WhyChooseItem[]): FeatureCarouselItem[] {
+  if (!items.length) return FALLBACK_FEATURES;
 
   return items.map((item, index) => ({
-    src: item.image || FALLBACK_IMAGES[index % FALLBACK_IMAGES.length].src,
-    alt: item.alt_text || item.title,
-    title: item.title,
+    id: String(item.id),
+    label: item.title,
     description: item.description,
+    image:
+      item.image ||
+      FALLBACK_FEATURES[index % FALLBACK_FEATURES.length].image,
   }));
 }
 
@@ -77,44 +86,36 @@ export default function WhyChooseSection() {
   const subtitle =
     settings?.why_choose_subtitle || 'Authentic luxury accessories, crafted for elegance';
 
-  const parallaxItems = toParallaxItems(items);
+  const features = toFeatures(items);
 
   return (
-    <section className="relative bg-brand-black text-white overflow-hidden">
-      {/* Intro — scroll into parallax */}
-      <div className="relative flex min-h-[50vh] items-center justify-center px-4 section-padding">
-        <div
-          aria-hidden
-          className={cn(
-            'pointer-events-none absolute -top-1/2 left-1/2 h-[120vmin] w-[120vmin] -translate-x-1/2 rounded-full',
-            'bg-[radial-gradient(ellipse_at_center,rgba(230,46,114,0.18),transparent_55%)]',
-            'blur-[40px]',
-          )}
-        />
+    <section className="relative overflow-hidden bg-black text-white">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-0 h-[40vmin] w-[80vmin] -translate-x-1/2 rounded-full bg-white/[0.06] blur-3xl"
+      />
+
+      <div className="relative mx-auto max-w-7xl px-4 pb-6 pt-14 text-center sm:px-6 sm:pb-8 sm:pt-20 md:pt-24">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="relative text-center max-w-2xl mx-auto"
+          transition={{ duration: 0.65 }}
+          className="mx-auto max-w-2xl"
         >
-          <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-pink mb-4">
+          <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-white/55 sm:mb-4 sm:text-xs sm:tracking-[0.25em]">
             The JBLuxe Difference
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold text-white mb-4">
+          <h2 className="mb-3 font-display text-3xl font-semibold text-white sm:mb-4 sm:text-4xl md:text-5xl">
             {title}
           </h2>
-          <p className="text-white/60 text-sm md:text-base leading-relaxed">{subtitle}</p>
-          <p className="mt-8 text-xs text-white/40 tracking-widest uppercase animate-pulse">
-            Scroll to explore
-          </p>
+          <p className="text-sm leading-relaxed text-white/65 sm:text-base">{subtitle}</p>
         </motion.div>
       </div>
 
-      <ZoomParallax items={parallaxItems} />
-
-      {/* Outro spacer */}
-      <div className="h-[30vh] bg-gradient-to-b from-brand-black to-brand-gray-50" />
+      <div className="relative pb-14 sm:pb-20 md:pb-24">
+        <FeatureCarousel features={features} />
+      </div>
     </section>
   );
 }
