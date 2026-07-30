@@ -61,6 +61,18 @@ class Command(BaseCommand):
         )
         settings.why_choose_title = 'Why Choose JBLuxe Accessories'
         settings.why_choose_subtitle = 'Authentic luxury accessories, crafted for elegance'
+        settings.hero_eyebrow = 'Luxury Fashion Accessories'
+        settings.hero_title = 'Discover Your Perfect Style'
+        settings.hero_subtitle = (
+            'Explore our premium collection of jewellery, bags, watches, shoes, sunglasses, '
+            'and fashion accessories. Curated for women and men who demand excellence.'
+        )
+        settings.hero_primary_cta_label = 'Shop Now'
+        settings.hero_primary_cta_url = '/shop'
+        settings.hero_secondary_cta_label = 'Browse Categories'
+        settings.hero_secondary_cta_url = '/categories'
+        settings.hero_disclaimer = 'Nationwide delivery · Secure checkout · Luxury quality guaranteed'
+        settings.hero_social_proof_text = 'Trusted by style lovers across Nigeria'
         settings.contact_email = 'contact@jbluxeaccessories.com'
         settings.whatsapp_number = '+2348135380528'
         settings.instagram_url = ''

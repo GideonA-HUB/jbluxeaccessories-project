@@ -25,6 +25,15 @@ interface SiteSettings {
   refund_policy: string;
   why_choose_title: string;
   why_choose_subtitle: string;
+  hero_eyebrow: string;
+  hero_title: string;
+  hero_subtitle: string;
+  hero_primary_cta_label: string;
+  hero_primary_cta_url: string;
+  hero_secondary_cta_label: string;
+  hero_secondary_cta_url: string;
+  hero_disclaimer: string;
+  hero_social_proof_text: string;
 }
 
 export default function AdminSettings() {
@@ -235,6 +244,104 @@ export default function AdminSettings() {
               type="url"
               defaultValue={settings?.youtube_url}
               onChange={(e) => handleInputChange('youtube_url', e.target.value)}
+              className="w-full px-4 py-3 rounded-xl border border-brand-gray-200 focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 outline-none transition-all"
+            />
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Homepage Hero */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.25 }}
+        className="bg-white rounded-2xl p-6 shadow-lg border border-brand-gray-100"
+      >
+        <h3 className="text-lg font-semibold text-brand-black mb-1">Homepage Hero</h3>
+        <p className="text-sm text-brand-accent/60 mb-4">
+          Controls the homepage hero copy. Upload carousel images under Hero Images.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-brand-accent mb-2">Eyebrow label</label>
+            <input
+              type="text"
+              defaultValue={settings?.hero_eyebrow}
+              onChange={(e) => handleInputChange('hero_eyebrow', e.target.value)}
+              className="w-full px-4 py-3 rounded-xl border border-brand-gray-200 focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 outline-none transition-all"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-brand-accent mb-2">Hero title</label>
+            <input
+              type="text"
+              defaultValue={settings?.hero_title}
+              onChange={(e) => handleInputChange('hero_title', e.target.value)}
+              className="w-full px-4 py-3 rounded-xl border border-brand-gray-200 focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 outline-none transition-all"
+            />
+          </div>
+          <div className="md:col-span-2">
+            <label className="block text-sm font-medium text-brand-accent mb-2">Hero subtitle</label>
+            <textarea
+              defaultValue={settings?.hero_subtitle}
+              onChange={(e) => handleInputChange('hero_subtitle', e.target.value)}
+              className="w-full px-4 py-3 rounded-xl border border-brand-gray-200 focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 outline-none transition-all resize-none"
+              rows={3}
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-brand-accent mb-2">Primary CTA label</label>
+            <input
+              type="text"
+              defaultValue={settings?.hero_primary_cta_label}
+              onChange={(e) => handleInputChange('hero_primary_cta_label', e.target.value)}
+              className="w-full px-4 py-3 rounded-xl border border-brand-gray-200 focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 outline-none transition-all"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-brand-accent mb-2">Primary CTA URL</label>
+            <input
+              type="text"
+              defaultValue={settings?.hero_primary_cta_url}
+              onChange={(e) => handleInputChange('hero_primary_cta_url', e.target.value)}
+              className="w-full px-4 py-3 rounded-xl border border-brand-gray-200 focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 outline-none transition-all"
+              placeholder="/shop"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-brand-accent mb-2">Secondary CTA label</label>
+            <input
+              type="text"
+              defaultValue={settings?.hero_secondary_cta_label}
+              onChange={(e) => handleInputChange('hero_secondary_cta_label', e.target.value)}
+              className="w-full px-4 py-3 rounded-xl border border-brand-gray-200 focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 outline-none transition-all"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-brand-accent mb-2">Secondary CTA URL</label>
+            <input
+              type="text"
+              defaultValue={settings?.hero_secondary_cta_url}
+              onChange={(e) => handleInputChange('hero_secondary_cta_url', e.target.value)}
+              className="w-full px-4 py-3 rounded-xl border border-brand-gray-200 focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 outline-none transition-all"
+              placeholder="/categories"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-brand-accent mb-2">Disclaimer</label>
+            <input
+              type="text"
+              defaultValue={settings?.hero_disclaimer}
+              onChange={(e) => handleInputChange('hero_disclaimer', e.target.value)}
+              className="w-full px-4 py-3 rounded-xl border border-brand-gray-200 focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 outline-none transition-all"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-brand-accent mb-2">Social proof text</label>
+            <input
+              type="text"
+              defaultValue={settings?.hero_social_proof_text}
+              onChange={(e) => handleInputChange('hero_social_proof_text', e.target.value)}
               className="w-full px-4 py-3 rounded-xl border border-brand-gray-200 focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 outline-none transition-all"
             />
           </div>

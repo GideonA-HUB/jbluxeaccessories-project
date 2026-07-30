@@ -31,6 +31,15 @@ class SiteAssetAdmin(admin.ModelAdmin):
 class SiteSettingsAdmin(admin.ModelAdmin):
     fieldsets = (
         ('General', {'fields': ('site_name', 'tagline', 'meta_description', 'meta_keywords')}),
+        ('Homepage Hero', {
+            'fields': (
+                'hero_eyebrow', 'hero_title', 'hero_subtitle',
+                'hero_primary_cta_label', 'hero_primary_cta_url',
+                'hero_secondary_cta_label', 'hero_secondary_cta_url',
+                'hero_disclaimer', 'hero_social_proof_text',
+            ),
+            'description': 'Copy for the homepage hero section. Carousel images are managed under Hero Images.',
+        }),
         ('Contact', {'fields': ('contact_email', 'contact_phone', 'whatsapp_number', 'address')}),
         ('Social Media', {'fields': ('instagram_url', 'facebook_url', 'twitter_url', 'tiktok_url', 'youtube_url')}),
         ('About Page', {
@@ -102,9 +111,14 @@ class WhyChooseItemAdmin(admin.ModelAdmin):
 
 @admin.register(HeroImage)
 class HeroImageAdmin(admin.ModelAdmin):
-    list_display = ['preview', 'alt_text', 'order', 'is_active', 'updated_at']
+    list_display = ['preview', 'title', 'category', 'link_url', 'order', 'is_active', 'updated_at']
     list_filter = ['is_active']
-    list_editable = ['order', 'is_active']
+    list_editable = ['order', 'is_active', 'category', 'title']
+    search_fields = ['title', 'category', 'alt_text']
+    fieldsets = (
+        (None, {'fields': ('image', 'title', 'category', 'alt_text', 'link_url')}),
+        ('Display', {'fields': ('order', 'is_active')}),
+    )
 
     def preview(self, obj):
         if obj.image:

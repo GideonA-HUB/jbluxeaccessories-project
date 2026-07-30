@@ -32,6 +32,10 @@ class SiteSettingsSerializer(serializers.ModelSerializer):
             'delivery_fee', 'currency', 'currency_symbol',
             'is_vat_inclusive', 'vat_rate',
             'why_choose_title', 'why_choose_subtitle',
+            'hero_eyebrow', 'hero_title', 'hero_subtitle',
+            'hero_primary_cta_label', 'hero_primary_cta_url',
+            'hero_secondary_cta_label', 'hero_secondary_cta_url',
+            'hero_disclaimer', 'hero_social_proof_text',
         ]
 
     def get_ceo_photo(self, obj):
@@ -105,7 +109,7 @@ class HeroImageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = HeroImage
-        fields = ['id', 'image', 'alt_text', 'order', 'is_active']
+        fields = ['id', 'image', 'alt_text', 'category', 'title', 'link_url', 'order', 'is_active']
 
     def get_image(self, obj):
         return absolute_media_url(self.context.get('request'), obj.image)

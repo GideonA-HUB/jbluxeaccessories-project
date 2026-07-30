@@ -5,9 +5,9 @@ import SEO from '@/components/SEO';
 import PaginatedProductGrid from '@/components/PaginatedProductGrid';
 import SaleAnnouncementBanner from '@/components/SaleAnnouncementBanner';
 import CategoryCard from '@/components/CategoryCard';
-import { ShuffleHero } from '@/components/ui/shuffle-grid';
 import SlidingTestimonial from '@/components/ui/sliding-testimonial';
 import WhyChooseSection from '@/components/WhyChooseSection';
+import HomeHero from '@/components/HomeHero';
 import { productsApi, siteApi } from '@/api';
 import type { Category, Product, Testimonial } from '@/types';
 
@@ -112,7 +112,7 @@ export default function HomePage() {
       <SEO />
 
       {/* Hero */}
-      <ShuffleHero />
+      <HomeHero />
 
       {/* Sale / Preorder Announcement */}
       <SaleAnnouncementBanner />

@@ -71,6 +71,41 @@ class SiteSettings(models.Model):
         blank=True,
         default='Authentic luxury accessories, crafted for elegance',
     )
+    # Homepage hero (PulseFit-style) — editable in Django admin + owner dashboard
+    hero_eyebrow = models.CharField(
+        max_length=120,
+        blank=True,
+        default='Luxury Fashion Accessories',
+        help_text='Small label above the homepage hero title',
+    )
+    hero_title = models.CharField(
+        max_length=200,
+        blank=True,
+        default='Discover Your Perfect Style',
+        help_text='Main homepage hero headline',
+    )
+    hero_subtitle = models.TextField(
+        blank=True,
+        default=(
+            'Explore our premium collection of jewellery, bags, watches, shoes, sunglasses, '
+            'and fashion accessories. Curated for women and men who demand excellence.'
+        ),
+        help_text='Supporting text under the homepage hero title',
+    )
+    hero_primary_cta_label = models.CharField(max_length=60, blank=True, default='Shop Now')
+    hero_primary_cta_url = models.CharField(max_length=255, blank=True, default='/shop')
+    hero_secondary_cta_label = models.CharField(max_length=60, blank=True, default='Browse Categories')
+    hero_secondary_cta_url = models.CharField(max_length=255, blank=True, default='/categories')
+    hero_disclaimer = models.CharField(
+        max_length=200,
+        blank=True,
+        default='Nationwide delivery · Secure checkout · Luxury quality guaranteed',
+    )
+    hero_social_proof_text = models.CharField(
+        max_length=120,
+        blank=True,
+        default='Trusted by style lovers across Nigeria',
+    )
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
@@ -215,6 +250,24 @@ class WhyChooseItem(models.Model):
 class HeroImage(models.Model):
     image = models.ImageField(upload_to='hero_images/')
     alt_text = models.CharField(max_length=255, blank=True)
+    category = models.CharField(
+        max_length=80,
+        blank=True,
+        default='COLLECTION',
+        help_text='Small label on the homepage hero carousel card (e.g. JEWELLERY, BAGS)',
+    )
+    title = models.CharField(
+        max_length=160,
+        blank=True,
+        default='',
+        help_text='Title shown on the homepage hero carousel card',
+    )
+    link_url = models.CharField(
+        max_length=255,
+        blank=True,
+        default='/shop',
+        help_text='Where the carousel card navigates when clicked',
+    )
     order = models.PositiveIntegerField(default=0)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -226,7 +279,7 @@ class HeroImage(models.Model):
         verbose_name_plural = 'Hero Images'
 
     def __str__(self):
-        return f'Hero Image {self.order}'
+        return self.title or self.alt_text or f'Hero Image {self.order}'
 
 
 class AdminActivityLog(models.Model):

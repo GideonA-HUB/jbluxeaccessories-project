@@ -135,6 +135,15 @@ export interface SiteSettings {
   refund_policy: string;
   why_choose_title?: string;
   why_choose_subtitle?: string;
+  hero_eyebrow?: string;
+  hero_title?: string;
+  hero_subtitle?: string;
+  hero_primary_cta_label?: string;
+  hero_primary_cta_url?: string;
+  hero_secondary_cta_label?: string;
+  hero_secondary_cta_url?: string;
+  hero_disclaimer?: string;
+  hero_social_proof_text?: string;
 }
 
 export interface WhyChooseItem {
