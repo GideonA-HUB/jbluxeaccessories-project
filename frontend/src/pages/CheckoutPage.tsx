@@ -102,7 +102,7 @@ export default function CheckoutPage() {
   if (items.length === 0) {
     return (
       <div className="section-padding text-center py-20">
-        <p className="text-brand-accent/50 mb-4">Your bag is empty</p>
+        <p className="text-brand-accent/50 mb-4">Your cart is empty</p>
         <button onClick={() => navigate('/shop')} className="btn-primary rounded-full px-8">
           Continue Shopping
         </button>

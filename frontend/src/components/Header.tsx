@@ -89,7 +89,12 @@ export default function Header({ whatsappNumber }: HeaderProps) {
               </button>
               <button onClick={openCart} className={`${iconBtn} relative`} aria-label="Cart">
                 <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.75}
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
                 </svg>
                 {itemCount > 0 && (
                   <span className="absolute top-0.5 right-0.5 min-w-[18px] h-[18px] bg-white text-brand-black text-[10px] font-bold rounded-full flex items-center justify-center px-1">
@@ -107,7 +112,7 @@ export default function Header({ whatsappNumber }: HeaderProps) {
                   type="search"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search luxury hair..."
+                  placeholder="Search accessories..."
                   className="w-full px-4 py-3 rounded-xl border border-brand-gray-200 bg-white text-brand-accent placeholder:text-brand-accent/45 text-sm outline-none focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/25"
                   autoFocus
                   autoComplete="off"

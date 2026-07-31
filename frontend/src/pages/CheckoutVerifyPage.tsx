@@ -131,7 +131,7 @@ export default function CheckoutVerifyPage() {
               You cancelled the payment. No money was charged.
             </p>
             <p className="text-sm text-brand-accent/50 dark:text-gray-500 mb-8">
-              Your bag and checkout details are still saved. You can return to checkout and try again whenever you are ready.
+              Your cart and checkout details are still saved. You can return to checkout and try again whenever you are ready.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link to="/checkout" className="btn-primary">
@@ -154,7 +154,7 @@ export default function CheckoutVerifyPage() {
               Your payment could not be completed. This may happen if the payment was declined or interrupted.
             </p>
             <p className="text-sm text-brand-accent/50 dark:text-gray-500 mb-8">
-              Your bag and checkout details are still saved. Please try again or choose a different payment method.
+              Your cart and checkout details are still saved. Please try again or choose a different payment method.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link to="/checkout" className="btn-primary">

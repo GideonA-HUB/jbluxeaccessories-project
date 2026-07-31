@@ -196,20 +196,20 @@ export default function ProductPage() {
                 <div className="flex items-center border border-brand-gray-200 rounded-full">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="w-10 h-10 flex items-center justify-center hover:text-brand-pink"
+                    className="w-10 h-10 flex items-center justify-center hover:text-brand-black dark:hover:text-white"
                   >
                     −
                   </button>
                   <span className="w-8 text-center font-medium">{quantity}</span>
                   <button
                     onClick={() => setQuantity(Math.min(product.stock, quantity + 1))}
-                    className="w-10 h-10 flex items-center justify-center hover:text-brand-pink"
+                    className="w-10 h-10 flex items-center justify-center hover:text-brand-black dark:hover:text-white"
                   >
                     +
                   </button>
                 </div>
                 <button onClick={handleAddToCart} className="btn-primary flex-1">
-                  {added ? 'Added to Bag ✓' : 'Add to Bag'}
+                  {added ? 'Added to Cart ✓' : 'Add to Cart'}
                 </button>
               </div>
             )}

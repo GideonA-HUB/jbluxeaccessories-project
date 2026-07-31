@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import StarRating from '@/components/StarRating';
 import MultiCurrencyPrice from '@/components/MultiCurrencyPrice';
 import ProductShare from '@/components/ProductShare';
 import type { Product } from '@/types';
-import { formatPrice, truncateText } from '@/utils/format';
+import { truncateText } from '@/utils/format';
 import { useCurrencyStore } from '@/store/currencyStore';
 
 interface ProductCardProps {
@@ -21,39 +20,39 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="luxury-card group"
+      transition={{ duration: 0.35, delay: index * 0.04 }}
+      className="luxury-card group flex flex-col"
     >
-      <div className="relative aspect-[4/5] overflow-hidden bg-brand-gray-50">
+      <div className="relative aspect-square overflow-hidden bg-brand-gray-50 dark:bg-dark-elevated">
         <Link to={`/product/${product.slug}`} className="block h-full">
           {product.primary_image ? (
             <img
               src={product.primary_image}
               alt={product.name}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-brand-accent/30">
-              <span className="text-4xl">✦</span>
+            <div className="flex h-full w-full items-center justify-center text-brand-accent/30">
+              <span className="text-3xl">✦</span>
             </div>
           )}
         </Link>
         {product.is_on_sale && (
-          <span className="absolute top-3 left-3 z-[1] bg-brand-pink text-white text-xs font-semibold px-2.5 py-1 rounded-full">
+          <span className="absolute left-2 top-2 z-[1] rounded-full bg-brand-black px-2 py-0.5 text-[10px] font-semibold text-white">
             -{product.discount_percentage}%
           </span>
         )}
         {product.is_new_arrival && (
-          <span className="absolute top-3 right-3 z-[1] bg-brand-black text-white text-xs font-semibold px-2.5 py-1 rounded-full">
+          <span className="absolute right-2 top-2 z-[1] rounded-full bg-brand-black px-2 py-0.5 text-[10px] font-semibold text-white">
             New
           </span>
         )}
         <div
           className={`absolute z-[2] ${
-            product.is_new_arrival ? 'top-12 right-3' : 'top-3 right-3'
+            product.is_new_arrival ? 'right-2 top-9' : 'right-2 top-2'
           }`}
         >
           <ProductShare
@@ -64,35 +63,29 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           />
         </div>
         {product.is_flash_sale && (
-          <span className="absolute bottom-3 left-3 z-[1] bg-brand-black text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">
+          <span className="absolute bottom-2 left-2 z-[1] rounded-full bg-brand-black px-2 py-0.5 text-[10px] font-semibold text-white">
             Flash Sale
           </span>
         )}
       </div>
 
-      <div className="p-3 space-y-2">
+      <div className="flex flex-1 flex-col gap-1.5 p-2.5 sm:p-3">
         <Link to={`/product/${product.slug}`}>
-          <h3 className="text-sm font-medium text-brand-accent leading-snug line-clamp-2 group-hover:text-brand-pink transition-colors">
-            {truncateText(product.name, 50)}
+          <h3 className="line-clamp-2 text-[13px] font-medium leading-snug text-brand-accent transition-colors group-hover:text-brand-black dark:text-gray-100 dark:group-hover:text-white sm:text-sm">
+            {truncateText(product.name, 42)}
           </h3>
         </Link>
-        {(product.review_count ?? 0) > 0 && product.average_rating != null && (
-          <div className="flex items-center gap-1.5">
-            <StarRating value={product.average_rating} size="sm" />
-            <span className="text-xs text-brand-accent/40">({product.review_count})</span>
-          </div>
-        )}
-        <div className="space-y-1">
-          <MultiCurrencyPrice amountNgn={product.current_price} settings={currencySettings} />
-          {product.is_on_sale && (
-            <span className="text-xs text-brand-accent/40 line-through block">
-              {formatPrice(product.price)}
-            </span>
-          )}
-        </div>
+
+        <MultiCurrencyPrice
+          amountNgn={product.current_price}
+          compareAtNgn={product.is_on_sale ? product.price : undefined}
+          settings={currencySettings}
+          compact
+        />
+
         <Link
           to={`/product/${product.slug}`}
-          className="block w-full text-center btn-ghost text-xs py-2.5 mt-1"
+          className="btn-ghost mt-auto block w-full py-1.5 text-center text-[11px] sm:py-2 sm:text-xs"
         >
           Select Options
         </Link>

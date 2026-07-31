@@ -172,7 +172,7 @@ export function PulseFitHero({
                   <button
                     type="button"
                     onClick={secondaryAction.onClick}
-                    className="rounded-full border border-neutral-300 bg-white px-6 py-3.5 text-base font-medium text-black transition-all hover:scale-[1.02] hover:border-black active:scale-[0.98] sm:px-8 sm:py-4 sm:text-lg"
+                    className="rounded-full border-2 border-black !bg-transparent px-6 py-3.5 text-base font-medium !text-black transition-all hover:scale-[1.02] hover:!bg-black hover:!text-white active:scale-[0.98] sm:px-8 sm:py-4 sm:text-lg"
                   >
                     {secondaryAction.label}
                   </button>

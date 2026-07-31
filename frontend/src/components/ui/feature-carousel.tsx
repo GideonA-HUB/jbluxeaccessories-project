@@ -177,7 +177,7 @@ export function FeatureCarousel({
                   style={{ height: itemHeight, width: "fit-content" }}
                   animate={{
                     y: wrappedDistance * itemHeight,
-                    opacity: 1 - Math.abs(wrappedDistance) * 0.28,
+                    opacity: Math.max(0.62, 1 - Math.abs(wrappedDistance) * 0.16),
                   }}
                   transition={{
                     type: "spring",
@@ -197,14 +197,14 @@ export function FeatureCarousel({
                     className={cn(
                       "group relative flex items-center gap-3 rounded-full border px-4 py-3 text-left transition-all duration-500 sm:gap-4 sm:px-6 sm:py-3.5 md:px-8 md:py-4",
                       isActive
-                        ? "z-10 border-white bg-white text-black"
-                        : "border-white/20 bg-transparent text-white/55 hover:border-white/45 hover:text-white",
+                        ? "z-10 border-white !bg-white !text-black shadow-lg"
+                        : "border-white/35 bg-transparent !text-white/80 hover:border-white/70 hover:!text-white",
                     )}
                   >
                     <div
                       className={cn(
                         "flex items-center justify-center transition-colors duration-500",
-                        isActive ? "text-black" : "text-white/40",
+                        isActive ? "!text-black" : "!text-white/70",
                       )}
                     >
                       <Icon className="h-4 w-4 sm:h-[18px] sm:w-[18px]" strokeWidth={2} />
@@ -268,7 +268,7 @@ export function FeatureCarousel({
                         exit={{ opacity: 0, y: 10 }}
                         className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/45 to-transparent p-5 pt-24 sm:p-8 sm:pt-28 md:p-10 md:pt-32"
                       >
-                        <div className="mb-2 w-fit rounded-full border border-neutral-200 bg-white px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-black shadow-lg sm:mb-3 sm:px-4 sm:py-1.5 sm:text-[11px]">
+                        <div className="mb-2 w-fit rounded-full border border-neutral-200 !bg-white px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] !text-black shadow-lg sm:mb-3 sm:px-4 sm:py-1.5 sm:text-[11px]">
                           {index + 1} • {feature.label}
                         </div>
                         <p className="text-base font-medium leading-snug tracking-tight text-white drop-shadow-md sm:text-xl md:text-2xl">

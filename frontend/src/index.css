@@ -27,20 +27,20 @@
     @apply bg-brand-black text-white font-medium px-6 py-3 rounded-full
            hover:bg-brand-accent transition-all duration-300
            active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed
-           dark:bg-white dark:text-brand-black dark:hover:bg-brand-gray-100;
+           dark:!bg-white dark:!text-black dark:hover:!bg-neutral-200;
   }
 
   .btn-outline {
     @apply border border-brand-accent/20 text-brand-accent font-medium px-6 py-3 rounded-full
-           hover:border-brand-pink hover:text-brand-pink transition-all duration-300
+           hover:border-brand-black hover:text-brand-black transition-all duration-300
            active:scale-[0.98]
-           dark:border-white/20 dark:text-gray-200 dark:hover:border-brand-pink dark:hover:text-brand-pink;
+           dark:border-white/30 dark:text-gray-100 dark:hover:border-white dark:hover:text-white;
   }
 
   .btn-ghost {
     @apply border border-brand-gray-200 text-brand-accent text-sm font-medium px-4 py-2 rounded-full
-           hover:border-brand-pink hover:text-brand-pink transition-all duration-300
-           dark:border-white/15 dark:text-gray-200 dark:hover:border-brand-pink;
+           hover:border-brand-black hover:text-brand-black transition-all duration-300
+           dark:border-white/25 dark:text-gray-100 dark:hover:border-white dark:hover:text-white dark:hover:bg-white/10;
   }
 
   .luxury-card {
@@ -225,6 +225,11 @@
   color: #ffffff !important;
 }
 
+.dark .hover\:text-brand-pink:hover,
+.dark .group:hover .group-hover\:text-brand-pink {
+  color: #ffffff !important;
+}
+
 .dark .bg-brand-pink {
   background-color: #ffffff !important;
   color: #000000 !important;
@@ -233,6 +238,7 @@
 .dark .hover\:bg-brand-pink:hover,
 .dark .hover\:bg-brand-pink\/90:hover {
   background-color: #e5e5e5 !important;
+  color: #000000 !important;
 }
 
 .dark .bg-brand-pink-dark {

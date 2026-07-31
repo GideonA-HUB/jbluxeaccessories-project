@@ -118,14 +118,14 @@ export default function MinimalFooter({
     <footer className="relative bg-brand-accent text-white">
       <div className="mx-auto max-w-7xl px-4 py-12 md:px-8 md:py-16">
         <div className="mb-12 border-b border-white/10 pb-10 text-center">
-          <h3 className="mb-2 text-xl font-display font-semibold text-brand-pink">
+          <h3 className="mb-2 text-xl font-display font-semibold text-white">
             Join Our Luxury Circle
           </h3>
           <p className="mb-6 text-sm text-white/60">
             Exclusive access to new arrivals, promotions & launches
           </p>
           {subscribed ? (
-            <p className="font-medium text-brand-pink">Thank you for subscribing!</p>
+            <p className="font-medium text-white">Thank you for subscribing!</p>
           ) : (
             <form onSubmit={handleSubscribe} className="mx-auto flex max-w-md flex-col gap-2 sm:flex-row">
               <input
@@ -133,13 +133,13 @@ export default function MinimalFooter({
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email address"
-                className="flex-1 rounded-full border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-brand-pink"
+                className="flex-1 rounded-full border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white"
                 required
               />
               <button
                 type="submit"
                 disabled={loading}
-                className="rounded-full bg-brand-pink px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-brand-pink/90 disabled:opacity-50 whitespace-nowrap"
+                className="whitespace-nowrap rounded-full bg-white px-6 py-3 text-sm font-medium text-brand-black transition-colors hover:bg-brand-gray-100 disabled:opacity-50"
               >
                 Subscribe
               </button>
@@ -168,7 +168,7 @@ export default function MinimalFooter({
                 <Link
                   key={href}
                   to={href}
-                  className="w-max py-1 text-sm text-white/60 transition-colors duration-200 hover:text-brand-pink hover:underline"
+                  className="w-max py-1 text-sm text-white/70 transition-colors duration-200 hover:text-white hover:underline"
                 >
                   {title}
                 </Link>
@@ -183,7 +183,7 @@ export default function MinimalFooter({
                 <Link
                   key={href}
                   to={href}
-                  className="w-max py-1 text-sm text-white/60 transition-colors duration-200 hover:text-brand-pink hover:underline"
+                  className="w-max py-1 text-sm text-white/70 transition-colors duration-200 hover:text-white hover:underline"
                 >
                   {title}
                 </Link>
@@ -198,7 +198,7 @@ export default function MinimalFooter({
                 <Link
                   key={href}
                   to={href}
-                  className="w-max py-1 text-sm text-white/60 transition-colors duration-200 hover:text-brand-pink hover:underline"
+                  className="w-max py-1 text-sm text-white/70 transition-colors duration-200 hover:text-white hover:underline"
                 >
                   {title}
                 </Link>
@@ -218,7 +218,7 @@ export default function MinimalFooter({
                 href={item.href}
                 target={item.href.startsWith('mailto:') ? undefined : '_blank'}
                 rel={item.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 transition-all hover:border-brand-pink hover:bg-brand-pink/10 hover:text-brand-pink"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white/80 transition-all hover:border-white hover:bg-white/15 hover:text-white"
                 aria-label={item.label}
                 title={item.label}
               >
@@ -228,7 +228,7 @@ export default function MinimalFooter({
           </div>
           <a
             href={`mailto:${resolvedEmail}`}
-            className="text-sm text-white/50 transition-colors hover:text-brand-pink"
+            className="text-sm text-white/60 transition-colors hover:text-white"
           >
             {resolvedEmail}
           </a>
