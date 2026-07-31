@@ -3,6 +3,9 @@
 WhatsApp / Facebook / Telegram crawlers do not run JavaScript, so client-side
 Helmet tags never appear in the HTML they fetch. Injecting og:* tags here makes
 shared product links show title, description, and image previews.
+
+Also rewrites the default favicon/link icons to the active SiteAsset favicon so
+hard refreshes do not briefly show the old static favicon.
 """
 
 from __future__ import annotations
@@ -17,6 +20,10 @@ from django.views import View
 from apps.core.media import absolute_media_url
 
 PRODUCT_PATH_RE = re.compile(r'^/product/([^/]+)/?$')
+FAVICON_LINK_RE = re.compile(
+    r'<link[^>]+rel=["\'](?:shortcut )?icon["\'][^>]*>',
+    re.IGNORECASE,
+)
 
 
 def _absolute_url(request, path: str) -> str:
@@ -35,6 +42,21 @@ def _truncate(text: str, max_len: int = 200) -> str:
     if len(text) <= max_len:
         return text
     return text[: max_len - 1].rsplit(' ', 1)[0] + '…'
+
+
+def get_site_asset_url(request, asset_type: str) -> str | None:
+    from apps.site_config.models import SiteAsset
+
+    try:
+        asset = SiteAsset.objects.filter(asset_type=asset_type, is_active=True).first()
+    except Exception:
+        return None
+    if not asset or not asset.image:
+        return None
+    url = absolute_media_url(request, asset.image)
+    if url and not url.startswith(('http://', 'https://')):
+        url = _absolute_url(request, url)
+    return url
 
 
 def build_product_og_tags(request, slug: str) -> str:
@@ -73,7 +95,9 @@ def build_product_og_tags(request, slug: str) -> str:
     if image and not image.startswith(('http://', 'https://')):
         image = _absolute_url(request, image)
     if not image:
-        image = _absolute_url(request, '/static/frontend/logo.png')
+        image = get_site_asset_url(request, 'logo') or _absolute_url(
+            request, '/static/frontend/logo.png'
+        )
 
     esc = html.escape
 
@@ -96,6 +120,24 @@ def build_product_og_tags(request, slug: str) -> str:
     return '\n    '.join(tags) + '\n    '
 
 
+def inject_site_favicon(request, content: str) -> str:
+    favicon = get_site_asset_url(request, 'favicon') or get_site_asset_url(request, 'logo')
+    if not favicon:
+        return content
+
+    esc = html.escape(favicon)
+    tags = (
+        f'<link rel="icon" type="image/png" href="{esc}" />\n'
+        f'    <link rel="apple-touch-icon" href="{esc}" />'
+    )
+    if FAVICON_LINK_RE.search(content):
+        content = FAVICON_LINK_RE.sub(tags, content, count=1)
+    elif '</head>' in content.lower():
+        idx = content.lower().rfind('</head>')
+        content = content[:idx] + f'    {tags}\n' + content[idx:]
+    return content
+
+
 class SpaIndexView(View):
     """Serve index.html for all SPA routes; inject product OG meta when applicable."""
 
@@ -105,30 +147,25 @@ class SpaIndexView(View):
         response = TemplateResponse(request, self.template_name, {})
         response.render()
 
-        match = PRODUCT_PATH_RE.match(request.path)
-        if not match:
-            return response
-
-        og_block = build_product_og_tags(request, match.group(1))
-        if not og_block:
-            return response
-
         content = response.content.decode('utf-8')
+        content = inject_site_favicon(request, content)
 
-        # Prefer replacing the default title so crawlers see the product name
-        content = re.sub(
-            r'<title>[^<]*</title>',
-            '',
-            content,
-            count=1,
-            flags=re.IGNORECASE,
-        )
-        if '</head>' in content.lower():
-            # Case-preserving replace of closing head tag
-            idx = content.lower().rfind('</head>')
-            content = content[:idx] + og_block + content[idx:]
-        else:
-            content = og_block + content
+        match = PRODUCT_PATH_RE.match(request.path)
+        if match:
+            og_block = build_product_og_tags(request, match.group(1))
+            if og_block:
+                content = re.sub(
+                    r'<title>[^<]*</title>',
+                    '',
+                    content,
+                    count=1,
+                    flags=re.IGNORECASE,
+                )
+                if '</head>' in content.lower():
+                    idx = content.lower().rfind('</head>')
+                    content = content[:idx] + og_block + content[idx:]
+                else:
+                    content = og_block + content
 
         response.content = content.encode('utf-8')
         return response

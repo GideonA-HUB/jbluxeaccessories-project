@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, type ReactNode } from 'react';
 import { siteApi } from '@/api';
+import BrandLogo from '@/components/BrandLogo';
 import { BRAND_EMAIL, BRAND_INSTAGRAM, BRAND_TIKTOK } from '@/constants/brand';
 import { cn } from '@/lib/utils';
 
@@ -258,12 +259,8 @@ export function MinimalFooter({
         <div className="grid grid-cols-2 gap-8 p-5 sm:grid-cols-6 sm:gap-6 sm:p-6 md:p-8">
           {/* Brand column */}
           <div className="col-span-2 flex flex-col gap-5 sm:col-span-6 md:col-span-3">
-            <Link to="/" className="w-max">
-              <img
-                src={`${import.meta.env.BASE_URL}logo.png`}
-                alt={siteName}
-                className="h-9 w-auto brightness-0 invert sm:h-10"
-              />
+            <Link to="/" className="w-max rounded-lg bg-white px-2.5 py-1.5">
+              <BrandLogo variant="navbar" alt={siteName} className="h-9 w-auto sm:h-10" />
             </Link>
             <p className="max-w-sm text-sm leading-relaxed text-white/50 text-balance">
               {resolvedTagline}

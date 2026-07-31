@@ -1,53 +1,41 @@
-import { motion } from 'framer-motion';
-
-const LOGO_SRC = `${import.meta.env.BASE_URL}logo.png`;
+import { cn } from '@/lib/utils';
 
 interface LoadingSpinnerProps {
   fullScreen?: boolean;
 }
 
+/**
+ * Dual black/white “snake” loader for route/page refresh states.
+ */
 export default function LoadingSpinner({ fullScreen = true }: LoadingSpinnerProps) {
-  const content = (
-    <div className="flex flex-col items-center justify-center gap-6">
-      <motion.div
-        className="relative w-20 h-20"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-      >
-        <img
-          src={LOGO_SRC}
-          alt="JBLuxe Accessories"
-          className="w-full h-full object-contain"
-        />
-      </motion.div>
-      <motion.div
-        className="flex gap-1"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-      >
-        {[0, 1, 2].map((i) => (
-          <motion.span
-            key={i}
-            className="w-2 h-2 rounded-full bg-brand-pink"
-            animate={{ scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
-          />
-        ))}
-      </motion.div>
-      <p className="text-sm text-brand-accent/60 font-medium tracking-widest uppercase">
-        Loading Luxury
+  const spinner = (
+    <div className="flex flex-col items-center justify-center gap-5" role="status" aria-live="polite">
+      <div className="snake-loader" aria-hidden="true">
+        <svg className="snake-loader__svg" viewBox="0 0 64 64">
+          <circle className="snake-loader__track" cx="32" cy="32" r="26" />
+          <circle className="snake-loader__snake snake-loader__snake--black" cx="32" cy="32" r="26" />
+          <circle className="snake-loader__snake snake-loader__snake--white" cx="32" cy="32" r="26" />
+        </svg>
+      </div>
+      <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-brand-accent/50 dark:text-white/50">
+        Loading
       </p>
+      <span className="sr-only">Loading</span>
     </div>
   );
 
   if (fullScreen) {
     return (
-      <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-white">
-        {content}
+      <div
+        className={cn(
+          'fixed inset-0 z-[9999] flex items-center justify-center',
+          'bg-white dark:bg-dark-surface',
+        )}
+      >
+        {spinner}
       </div>
     );
   }
 
-  return <div className="flex items-center justify-center py-20">{content}</div>;
+  return <div className="flex items-center justify-center py-16 sm:py-20">{spinner}</div>;
 }

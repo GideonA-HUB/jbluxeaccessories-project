@@ -4,6 +4,7 @@ import MainLayout from '@/layouts/MainLayout';
 import AdminLayout from '@/pages/admin/AdminLayout';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import ScrollToTop from '@/components/ScrollToTop';
+import { useSiteAssets } from '@/hooks/useSiteAssets';
 import HomePage from '@/pages/HomePage';
 import ShopPage from '@/pages/ShopPage';
 import ProductPage from '@/pages/ProductPage';
@@ -40,9 +41,15 @@ function ScrollToTopOnRouteChange() {
   return null;
 }
 
+function SiteAssetsBootstrap() {
+  useSiteAssets();
+  return null;
+}
+
 export default function App() {
   return (
-    <Suspense fallback={<LoadingSpinner fullScreen={false} />}>
+    <Suspense fallback={<LoadingSpinner fullScreen />}>
+      <SiteAssetsBootstrap />
       <ScrollToTopOnRouteChange />
       <ScrollToTop />
       <Routes>

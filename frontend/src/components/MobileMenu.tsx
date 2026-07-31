@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import BrandLogo from './BrandLogo';
 import ThemeToggle from './ThemeToggle';
 import CurrencySelector from './CurrencySelector';
 import { useThemeStore } from '@/store/themeStore';
@@ -42,7 +43,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             className="fixed left-0 top-0 h-full w-[min(100vw-3rem,18rem)] bg-white dark:bg-dark-card z-50 shadow-luxury-lg flex flex-col border-r border-brand-gray-100 dark:border-white/10"
           >
             <div className="flex items-center justify-between p-4 border-b border-brand-gray-100 dark:border-white/10">
-              <img src={`${import.meta.env.BASE_URL}logo.png`} alt="JBLuxe Accessories" className="h-7" />
+              <BrandLogo variant="menu" className="h-11 w-auto max-w-[11rem] sm:h-12" />
               <button
                 onClick={onClose}
                 className="p-2 hover:bg-brand-gray-50 dark:hover:bg-white/10 rounded-full text-brand-accent dark:text-gray-200"

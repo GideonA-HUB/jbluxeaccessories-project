@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { siteApi } from '@/api';
+import BrandLogo from '@/components/BrandLogo';
 
 interface FooterProps {
   siteName?: string;
@@ -66,7 +67,7 @@ export default function Footer({
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
           <div>
-            <img src={`${import.meta.env.BASE_URL}logo.png`} alt={siteName} className="h-8 mb-4 brightness-0 invert" />
+            <BrandLogo variant="footer" alt={siteName} className="mb-4 h-8 w-auto" />
             <p className="text-white/50 text-sm leading-relaxed">
               Premium jewellery, bags, watches, shoes and fashion accessories for women and men.
             </p>

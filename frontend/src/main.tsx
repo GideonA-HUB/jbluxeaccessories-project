@@ -33,3 +33,7 @@ createRoot(document.getElementById('root')!).render(
     </ErrorBoundary>
   </StrictMode>
 );
+
+requestAnimationFrame(() => {
+  document.getElementById('boot-loader')?.remove();
+});

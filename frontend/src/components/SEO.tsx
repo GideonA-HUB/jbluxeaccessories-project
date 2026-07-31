@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { getBrandLogoUrl, useSiteAssets } from '@/hooks/useSiteAssets';
 
 interface SEOProps {
   title?: string;
@@ -17,14 +18,16 @@ export default function SEO({
   title,
   description = DEFAULT_DESCRIPTION,
   canonical,
-  image = `${import.meta.env.BASE_URL}logo.png`,
+  image,
   type = 'website',
   schema,
 }: SEOProps) {
+  const { assets } = useSiteAssets();
   const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} - Luxury Fashion Accessories`;
   const siteUrl = window.location.origin;
   const canonicalUrl = canonical || window.location.href;
-  const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
+  const resolvedImage = image || getBrandLogoUrl(assets);
+  const imageUrl = resolvedImage.startsWith('http') ? resolvedImage : `${siteUrl}${resolvedImage}`;
 
   return (
     <Helmet>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCartStore } from '@/store/cartStore';
+import BrandLogo from './BrandLogo';
 import MobileMenu from './MobileMenu';
 import ThemeToggle from './ThemeToggle';
 import CurrencySelector from './CurrencySelector';
@@ -59,7 +60,7 @@ export default function Header({ whatsappNumber }: HeaderProps) {
 
         {/* Main Nav */}
         <header className="border-b border-white/10">
-          <div className="max-w-7xl mx-auto px-3 sm:px-4 flex items-center justify-between h-16 sm:h-[4.5rem]">
+          <div className="max-w-7xl mx-auto px-3 sm:px-4 flex items-center justify-between h-[4.75rem] sm:h-[5.5rem]">
             <button
               onClick={() => setMenuOpen(true)}
               className={`${iconBtn} -ml-1`}
@@ -72,12 +73,11 @@ export default function Header({ whatsappNumber }: HeaderProps) {
 
             <Link
               to="/"
-              className="absolute left-1/2 -translate-x-1/2 flex items-center bg-white rounded-lg px-2.5 py-1 sm:px-3 sm:py-1.5 shadow-sm"
+              className="absolute left-1/2 flex -translate-x-1/2 items-center rounded-xl bg-white px-3 py-1.5 shadow-sm sm:px-4 sm:py-2"
             >
-              <img
-                src={`${import.meta.env.BASE_URL}logo.png`}
-                alt="JBLuxe Accessories"
-                className="h-9 w-auto sm:h-10 md:h-11 max-w-[min(48vw,200px)] object-contain"
+              <BrandLogo
+                variant="navbar"
+                className="h-14 w-auto max-w-[min(62vw,280px)] sm:h-16 md:h-[4.25rem]"
               />
             </Link>
 

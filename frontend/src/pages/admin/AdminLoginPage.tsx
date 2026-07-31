@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { authApi } from '@/api';
 import { useAuthStore } from '@/store/authStore';
+import BrandLogo from '@/components/BrandLogo';
 
 export default function AdminLoginPage() {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ export default function AdminLoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-brand-gray-50 px-4">
       <div className="w-full max-w-sm bg-white rounded-card shadow-luxury p-8">
         <div className="text-center mb-8">
-          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="JBLuxe Accessories" className="h-8 mx-auto mb-4" />
+          <BrandLogo className="mx-auto mb-4 h-10 w-auto" />
           <h1 className="text-lg font-display font-semibold">Admin Dashboard</h1>
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

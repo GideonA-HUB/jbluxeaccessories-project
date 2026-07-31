@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import SEO from '@/components/SEO';
+import BrandLogo from '@/components/BrandLogo';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { analyticsApi, notificationsApi } from '@/api';
 import { useAuthStore } from '@/store/authStore';
@@ -46,7 +47,7 @@ export default function AdminDashboardPage() {
       <div className="min-h-screen bg-brand-gray-50">
         <header className="bg-white border-b border-brand-gray-100 px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="JBLuxe Accessories" className="h-7" />
+            <BrandLogo className="h-8 w-auto" />
             <span className="font-display font-semibold text-sm">Admin</span>
           </div>
           <div className="flex items-center gap-3">
