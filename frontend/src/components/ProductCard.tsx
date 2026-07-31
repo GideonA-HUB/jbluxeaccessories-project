@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import MultiCurrencyPrice from '@/components/MultiCurrencyPrice';
 import ProductShare from '@/components/ProductShare';
+import StarRating from '@/components/StarRating';
 import type { Product } from '@/types';
 import { truncateText } from '@/utils/format';
 import { useCurrencyStore } from '@/store/currencyStore';
@@ -17,6 +18,10 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
     typeof window !== 'undefined'
       ? `${window.location.origin}/product/${product.slug}`
       : `/product/${product.slug}`;
+
+  const reviewCount = product.review_count ?? 0;
+  const averageRating = product.average_rating ?? 0;
+  const showRating = reviewCount > 0 && averageRating > 0;
 
   return (
     <motion.div
@@ -69,12 +74,25 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
         )}
       </div>
 
-      <div className="flex flex-1 flex-col gap-1.5 p-2.5 sm:p-3">
+      <div className="flex flex-1 flex-col gap-1 p-2.5 sm:gap-1.5 sm:p-3">
         <Link to={`/product/${product.slug}`}>
           <h3 className="line-clamp-2 text-[13px] font-medium leading-snug text-brand-accent transition-colors group-hover:text-brand-black dark:text-gray-100 dark:group-hover:text-white sm:text-sm">
             {truncateText(product.name, 42)}
           </h3>
         </Link>
+
+        {showRating && (
+          <Link
+            to={`/product/${product.slug}#reviews`}
+            className="inline-flex items-center gap-0.5 leading-none"
+            aria-label={`${averageRating} out of 5 stars, ${reviewCount} review${reviewCount !== 1 ? 's' : ''}`}
+          >
+            <StarRating value={averageRating} size="sm" />
+            <span className="ml-0.5 text-[11px] font-medium text-brand-accent/55 dark:text-gray-400">
+              ({reviewCount})
+            </span>
+          </Link>
+        )}
 
         <MultiCurrencyPrice
           amountNgn={product.current_price}

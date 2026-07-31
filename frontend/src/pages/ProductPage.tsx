@@ -138,12 +138,12 @@ export default function ProductPage() {
             <h1 className="text-2xl md:text-3xl font-display font-semibold">{product.name}</h1>
 
             {(product.review_count ?? 0) > 0 && product.average_rating != null && (
-              <div className="flex items-center gap-2">
+              <a href="#reviews" className="inline-flex items-center gap-1.5">
                 <StarRating value={product.average_rating} size="md" />
-                <span className="text-sm text-brand-accent/60">
-                  {product.average_rating} · {product.review_count} review{product.review_count !== 1 ? 's' : ''}
+                <span className="text-sm font-medium text-brand-accent/60 dark:text-gray-400">
+                  ({product.review_count})
                 </span>
-              </div>
+              </a>
             )}
 
             <div className="flex items-start gap-3 flex-wrap">

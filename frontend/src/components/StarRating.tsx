@@ -7,9 +7,9 @@ interface StarRatingProps {
 }
 
 const sizeClasses = {
-  sm: 'text-sm gap-0.5',
-  md: 'text-lg gap-0.5',
-  lg: 'text-2xl gap-1',
+  sm: 'text-[11px] gap-px sm:text-xs',
+  md: 'text-base gap-0.5 sm:text-lg',
+  lg: 'text-xl gap-1 sm:text-2xl',
 };
 
 export default function StarRating({
@@ -22,12 +22,18 @@ export default function StarRating({
   const rounded = Math.round(value);
 
   return (
-    <div className={`inline-flex items-center ${sizeClasses[size]}`} role="img" aria-label={`${value} out of ${max} stars`}>
+    <div
+      className={`inline-flex items-center ${sizeClasses[size]}`}
+      role="img"
+      aria-label={`${value} out of ${max} stars`}
+    >
       {Array.from({ length: max }).map((_, i) => {
         const filled = i < rounded;
         const className = `transition-colors leading-none ${
-          filled ? 'text-brand-pink' : 'text-brand-gray-200'
-        } ${interactive ? 'cursor-pointer hover:scale-110 hover:text-brand-pink' : ''}`;
+          filled
+            ? 'text-brand-black dark:text-white'
+            : 'text-brand-gray-200 dark:text-white/25'
+        } ${interactive ? 'cursor-pointer hover:scale-110 hover:text-brand-black dark:hover:text-white' : ''}`;
 
         if (interactive && onChange) {
           return (

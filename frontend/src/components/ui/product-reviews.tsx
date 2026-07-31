@@ -89,7 +89,11 @@ export default function ProductReviews({
   };
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden bg-brand-gray-50 dark:bg-dark-surface">
+    <section
+      id="reviews"
+      ref={sectionRef}
+      className="relative overflow-hidden bg-brand-gray-50 dark:bg-dark-surface"
+    >
       <div className="relative section-padding max-w-7xl mx-auto">
         {/* Heading block (pink only here) */}
         <motion.div
