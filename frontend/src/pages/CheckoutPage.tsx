@@ -533,7 +533,7 @@ export default function CheckoutPage() {
             <button
               type="submit"
               disabled={loading || !agreedToTerms}
-              className="btn-primary w-full py-3.5 rounded-full text-sm md:text-base disabled:opacity-50 disabled:cursor-not-allowed"
+              className="btn-primary w-full rounded-full py-3.5 text-sm md:text-base"
             >
               {loading ? 'Processing...' : `Pay ${formatPrice(total)}`}
             </button>

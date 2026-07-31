@@ -102,7 +102,11 @@ export default function CartDrawer() {
                   <span>Total</span>
                   <span>{formatPrice(subtotal + deliveryFee)}</span>
                 </div>
-                <Link to="/checkout" onClick={closeCart} className="btn-primary block text-center w-full">
+                <Link
+                  to="/checkout"
+                  onClick={closeCart}
+                  className="btn-primary block w-full text-center"
+                >
                   Checkout
                 </Link>
               </div>

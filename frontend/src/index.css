@@ -24,10 +24,19 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-brand-black text-white font-medium px-6 py-3 rounded-full
-           hover:bg-brand-accent transition-all duration-300
-           active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed
-           dark:!bg-white dark:!text-black dark:hover:!bg-neutral-200;
+    @apply font-medium px-6 py-3 rounded-full transition-all duration-300
+           active:scale-[0.98] disabled:cursor-not-allowed;
+    background-color: #000000;
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.55;
   }
 
   .btn-outline {
@@ -75,6 +84,11 @@
   }
 }
 
+/*
+ * Dark mode primary CTAs — placeholder removed; definitive rules live at
+ * the end of this file so they always win the cascade.
+ */
+
 /* Global dark-mode readability overrides for existing utility classes */
 @layer utilities {
   .text-balance {
@@ -100,6 +114,13 @@
 
   .dark .bg-white {
     @apply !bg-dark-card;
+  }
+
+  /* Keep true white surfaces that must stay white in dark mode */
+  .dark .bg-keep-white,
+  .dark .keep-white {
+    background-color: #ffffff !important;
+    color: #000000 !important;
   }
 
   .dark .bg-brand-white {
@@ -277,4 +298,47 @@
 
 .dark .to-brand-pink-dark {
   --tw-gradient-to: #0a0a0a var(--tw-gradient-to-position);
+}
+
+/*
+ * FINAL dark-mode CTA override (end of file = last in cascade).
+ * Targets Add to Cart, Submit Review, Checkout, Pay, and all .btn-primary CTAs.
+ * Uses hex colors (not bg-white) so the global dark bg-white→card remap cannot win.
+ */
+html.dark button.btn-primary,
+html.dark a.btn-primary,
+html.dark .btn-primary,
+.dark button.btn-primary,
+.dark a.btn-primary,
+.dark .btn-primary {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  border: 1px solid #ffffff !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+  opacity: 1 !important;
+}
+
+html.dark button.btn-primary:hover,
+html.dark a.btn-primary:hover,
+html.dark .btn-primary:hover,
+.dark button.btn-primary:hover,
+.dark a.btn-primary:hover,
+.dark .btn-primary:hover {
+  background-color: #f3f3f3 !important;
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  border-color: #f3f3f3 !important;
+}
+
+html.dark button.btn-primary:disabled,
+html.dark .btn-primary:disabled,
+.dark button.btn-primary:disabled,
+.dark .btn-primary:disabled {
+  background-color: #d4d4d4 !important;
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  opacity: 0.85 !important;
+  cursor: not-allowed;
 }

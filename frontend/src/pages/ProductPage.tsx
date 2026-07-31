@@ -208,7 +208,11 @@ export default function ProductPage() {
                     +
                   </button>
                 </div>
-                <button onClick={handleAddToCart} className="btn-primary flex-1">
+                <button
+                  type="button"
+                  onClick={handleAddToCart}
+                  className="btn-primary flex-1 min-h-[44px]"
+                >
                   {added ? 'Added to Cart ✓' : 'Add to Cart'}
                 </button>
               </div>

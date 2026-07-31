@@ -303,7 +303,7 @@ export default function ProductReviews({
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="btn-primary px-8 py-3 rounded-full disabled:opacity-50"
+                  className="btn-primary px-8 py-3 rounded-full"
                 >
                   {submitting ? 'Submitting...' : 'Submit Review'}
                 </button>
