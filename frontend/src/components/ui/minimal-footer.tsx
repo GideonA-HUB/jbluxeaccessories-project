@@ -1,12 +1,12 @@
-"use client"
-
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { siteApi } from '@/api';
 import { BRAND_EMAIL, BRAND_INSTAGRAM, BRAND_TIKTOK } from '@/constants/brand';
+import { cn } from '@/lib/utils';
 
 interface FooterProps {
   siteName?: string;
+  tagline?: string;
   contactEmail?: string;
   instagramUrl?: string;
   facebookUrl?: string;
@@ -23,6 +23,38 @@ function InstagramIcon({ className }: { className?: string }) {
   );
 }
 
+function FacebookIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z" />
+    </svg>
+  );
+}
+
+function TwitterIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z" />
+    </svg>
+  );
+}
+
+function YoutubeIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M23.498 6.186a2.994 2.994 0 00-2.11-2.12C19.576 3.5 12 3.5 12 3.5s-7.576 0-9.388.566A2.994 2.994 0 00.502 6.186C0 8.007 0 12 0 12s0 3.993.502 5.814a2.994 2.994 0 002.11 2.12C4.424 20.5 12 20.5 12 20.5s7.576 0 9.388-.566a2.994 2.994 0 002.11-2.12C24 15.993 24 12 24 12s0-3.993-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+    </svg>
+  );
+}
+
+function MailIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+    </svg>
+  );
+}
+
 function TikTokIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -31,16 +63,58 @@ function TikTokIcon({ className }: { className?: string }) {
   );
 }
 
-function EmailIcon({ className }: { className?: string }) {
+const DEFAULT_TAGLINE =
+  'Premium jewellery, bags, watches, shoes and fashion accessories for women and men.';
+
+const shopLinks = [
+  { title: 'All Products', href: '/shop' },
+  { title: 'Categories', href: '/categories' },
+  { title: 'New Arrivals', href: '/shop?filter=new-arrivals' },
+  { title: 'Best Sellers', href: '/shop?filter=bestsellers' },
+  { title: 'Flash Sales', href: '/shop?filter=flash-sales' },
+];
+
+const companyLinks = [
+  { title: 'About', href: '/about' },
+  { title: 'Contact', href: '/contact' },
+];
+
+const legalLinks = [
+  { title: 'Privacy Policy', href: '/privacy' },
+  { title: 'Terms of Service', href: '/terms' },
+  { title: 'Refund Policy', href: '/refund' },
+];
+
+function FooterLinkColumn({
+  label,
+  links,
+}: {
+  label: string;
+  links: Array<{ title: string; href: string }>;
+}) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-    </svg>
+    <div className="col-span-2 w-full sm:col-span-1">
+      <span className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.14em] text-white/45">
+        {label}
+      </span>
+      <div className="flex flex-col gap-0.5">
+        {links.map(({ href, title }) => (
+          <Link
+            key={href}
+            to={href}
+            className="w-max py-1.5 text-sm text-white/75 transition-colors duration-200 hover:text-white hover:underline"
+          >
+            {title}
+          </Link>
+        ))}
+      </div>
+    </div>
   );
 }
 
-export default function MinimalFooter({
+export function MinimalFooter({
   siteName = 'JBLuxe Accessories',
+  tagline,
   contactEmail,
   instagramUrl,
   facebookUrl,
@@ -69,175 +143,169 @@ export default function MinimalFooter({
 
   const year = new Date().getFullYear();
   const resolvedEmail = contactEmail || BRAND_EMAIL;
+  const resolvedTagline = tagline?.trim() || DEFAULT_TAGLINE;
   const resolvedInstagram = instagramUrl || BRAND_INSTAGRAM;
   const resolvedTiktok = tiktokUrl || BRAND_TIKTOK;
 
-  const shopLinks = [
-    { title: 'All Products', href: '/shop' },
-    { title: 'Categories', href: '/categories' },
-    { title: 'New Arrivals', href: '/shop?filter=new-arrivals' },
-    { title: 'Best Sellers', href: '/shop?filter=bestsellers' },
-    { title: 'Flash Sales', href: '/shop?filter=flash-sales' },
-  ];
-
-  const companyLinks = [
-    { title: 'About', href: '/about' },
-    { title: 'Contact', href: '/contact' },
-  ];
-
-  const legalLinks = [
-    { title: 'Privacy Policy', href: '/privacy' },
-    { title: 'Terms of Service', href: '/terms' },
-    { title: 'Refund Policy', href: '/refund' },
-  ];
-
-  const socialLinks = [
+  const socialLinks: Array<{ href: string; label: string; icon: ReactNode; external?: boolean }> = [
     ...(resolvedInstagram
-      ? [{ href: resolvedInstagram, label: 'Instagram', icon: <InstagramIcon className="h-5 w-5" /> }]
+      ? [
+          {
+            href: resolvedInstagram,
+            label: 'Instagram',
+            icon: <InstagramIcon className="size-4" />,
+            external: true,
+          },
+        ]
       : []),
     ...(resolvedTiktok
-      ? [{ href: resolvedTiktok, label: 'TikTok', icon: <TikTokIcon className="h-5 w-5" /> }]
+      ? [
+          {
+            href: resolvedTiktok,
+            label: 'TikTok',
+            icon: <TikTokIcon className="size-4" />,
+            external: true,
+          },
+        ]
+      : []),
+    ...(facebookUrl
+      ? [
+          {
+            href: facebookUrl,
+            label: 'Facebook',
+            icon: <FacebookIcon className="size-4" />,
+            external: true,
+          },
+        ]
+      : []),
+    ...(twitterUrl
+      ? [
+          {
+            href: twitterUrl,
+            label: 'Twitter',
+            icon: <TwitterIcon className="size-4" />,
+            external: true,
+          },
+        ]
+      : []),
+    ...(youtubeUrl
+      ? [
+          {
+            href: youtubeUrl,
+            label: 'YouTube',
+            icon: <YoutubeIcon className="size-4" />,
+            external: true,
+          },
+        ]
       : []),
     {
       href: `mailto:${resolvedEmail}`,
       label: 'Email',
-      icon: <EmailIcon className="h-5 w-5" />,
+      icon: <MailIcon className="size-4" />,
+      external: false,
     },
-    ...(facebookUrl
-      ? [{ href: facebookUrl, label: 'Facebook', icon: <span className="text-xs font-semibold">f</span> }]
-      : []),
-    ...(twitterUrl
-      ? [{ href: twitterUrl, label: 'Twitter', icon: <span className="text-xs font-semibold">X</span> }]
-      : []),
-    ...(youtubeUrl
-      ? [{ href: youtubeUrl, label: 'YouTube', icon: <span className="text-xs font-semibold">YT</span> }]
-      : []),
   ];
 
   return (
-    <footer className="relative bg-brand-accent text-white">
-      <div className="mx-auto max-w-7xl px-4 py-12 md:px-8 md:py-16">
-        <div className="mb-12 border-b border-white/10 pb-10 text-center">
-          <h3 className="mb-2 text-xl font-display font-semibold text-white">
+    <footer className="relative overflow-hidden bg-brand-black text-white">
+      {/* Newsletter — retained */}
+      <div className="relative z-10 border-b border-white/10 px-4 py-10 sm:px-6 sm:py-12 md:px-8">
+        <div className="mx-auto max-w-lg text-center">
+          <h3 className="mb-2 font-display text-xl font-semibold tracking-tight sm:text-2xl">
             Join Our Luxury Circle
           </h3>
-          <p className="mb-6 text-sm text-white/60">
-            Exclusive access to new arrivals, promotions & launches
+          <p className="mb-6 text-sm text-white/55">
+            Exclusive access to new arrivals, promotions &amp; launches
           </p>
           {subscribed ? (
             <p className="font-medium text-white">Thank you for subscribing!</p>
           ) : (
-            <form onSubmit={handleSubscribe} className="mx-auto flex max-w-md flex-col gap-2 sm:flex-row">
+            <form
+              onSubmit={handleSubscribe}
+              className="mx-auto flex w-full max-w-md flex-col gap-2 sm:flex-row"
+            >
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email address"
-                className="flex-1 rounded-full border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white"
+                className="min-h-[44px] flex-1 rounded-full border border-white/20 bg-white/10 px-4 py-3 text-sm text-white outline-none placeholder:text-white/40 focus:border-white"
                 required
+                autoComplete="email"
               />
               <button
                 type="submit"
                 disabled={loading}
-                className="whitespace-nowrap rounded-full bg-white px-6 py-3 text-sm font-medium text-brand-black transition-colors hover:bg-brand-gray-100 disabled:opacity-50"
+                className="min-h-[44px] whitespace-nowrap rounded-full bg-white px-6 py-3 text-sm font-medium text-brand-black transition-colors hover:bg-neutral-100 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 Subscribe
               </button>
             </form>
           )}
         </div>
+      </div>
 
-        <div className="grid gap-8 md:grid-cols-4">
-          <div className="md:col-span-1">
-            <Link to="/" className="mb-4 inline-block">
+      {/* 21st.dev-style minimal frame */}
+      <div
+        className={cn(
+          'relative mx-auto max-w-5xl',
+          'bg-[radial-gradient(35%_80%_at_30%_0%,rgba(255,255,255,0.08),transparent)]',
+          'md:border-x md:border-white/10',
+        )}
+      >
+        <div className="absolute inset-x-0 top-0 h-px w-full bg-white/10" aria-hidden />
+
+        <div className="grid grid-cols-2 gap-8 p-5 sm:grid-cols-6 sm:gap-6 sm:p-6 md:p-8">
+          {/* Brand column */}
+          <div className="col-span-2 flex flex-col gap-5 sm:col-span-6 md:col-span-3">
+            <Link to="/" className="w-max">
               <img
                 src={`${import.meta.env.BASE_URL}logo.png`}
                 alt={siteName}
-                className="h-8 brightness-0 invert"
+                className="h-9 w-auto brightness-0 invert sm:h-10"
               />
             </Link>
-            <p className="text-sm text-white/50 leading-relaxed">
-              Premium jewellery, bags, watches, shoes and fashion accessories for women and men.
+            <p className="max-w-sm text-sm leading-relaxed text-white/50 text-balance">
+              {resolvedTagline}
             </p>
-          </div>
-
-          <div className="md:col-span-1">
-            <span className="mb-3 block text-xs font-semibold text-white/60">Shop</span>
-            <div className="flex flex-col gap-2">
-              {shopLinks.map(({ href, title }) => (
-                <Link
-                  key={href}
-                  to={href}
-                  className="w-max py-1 text-sm text-white/70 transition-colors duration-200 hover:text-white hover:underline"
+            <div className="flex flex-wrap gap-2">
+              {socialLinks.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target={item.external ? '_blank' : undefined}
+                  rel={item.external ? 'noopener noreferrer' : undefined}
+                  aria-label={item.label}
+                  title={item.label}
+                  className="rounded-md border border-white/15 p-2 text-white/70 transition-colors hover:border-white/40 hover:bg-white/10 hover:text-white"
                 >
-                  {title}
-                </Link>
+                  {item.icon}
+                </a>
               ))}
             </div>
+            <a
+              href={`mailto:${resolvedEmail}`}
+              className="w-max text-sm text-white/55 transition-colors hover:text-white hover:underline"
+            >
+              {resolvedEmail}
+            </a>
           </div>
 
-          <div className="md:col-span-1">
-            <span className="mb-3 block text-xs font-semibold text-white/60">Company</span>
-            <div className="flex flex-col gap-2">
-              {companyLinks.map(({ href, title }) => (
-                <Link
-                  key={href}
-                  to={href}
-                  className="w-max py-1 text-sm text-white/70 transition-colors duration-200 hover:text-white hover:underline"
-                >
-                  {title}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div className="md:col-span-1">
-            <span className="mb-3 block text-xs font-semibold text-white/60">Legal</span>
-            <div className="flex flex-col gap-2">
-              {legalLinks.map(({ href, title }) => (
-                <Link
-                  key={href}
-                  to={href}
-                  className="w-max py-1 text-sm text-white/70 transition-colors duration-200 hover:text-white hover:underline"
-                >
-                  {title}
-                </Link>
-              ))}
-            </div>
-          </div>
+          <FooterLinkColumn label="Shop" links={shopLinks} />
+          <FooterLinkColumn label="Company" links={companyLinks} />
+          <FooterLinkColumn label="Legal" links={legalLinks} />
         </div>
 
-        <div className="mt-8 flex flex-col items-center gap-4">
-          <span className="text-xs font-semibold uppercase tracking-wider text-white/50">
-            Connect With Us
-          </span>
-          <div className="flex items-center justify-center gap-3">
-            {socialLinks.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                target={item.href.startsWith('mailto:') ? undefined : '_blank'}
-                rel={item.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white/80 transition-all hover:border-white hover:bg-white/15 hover:text-white"
-                aria-label={item.label}
-                title={item.label}
-              >
-                {item.icon}
-              </a>
-            ))}
-          </div>
-          <a
-            href={`mailto:${resolvedEmail}`}
-            className="text-sm text-white/60 transition-colors hover:text-white"
-          >
-            {resolvedEmail}
-          </a>
-        </div>
+        <div className="absolute inset-x-0 h-px w-full bg-white/10" aria-hidden />
 
-        <div className="mt-8 border-t border-white/10 pt-6 text-center text-xs text-white/30">
-          © {year} {siteName}. All rights reserved.
+        <div className="flex flex-col items-center justify-between gap-2 px-4 py-5 sm:px-6 md:px-8">
+          <p className="text-center text-xs font-light text-white/40">
+            © {year} {siteName}. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
   );
 }
+
+export default MinimalFooter;
