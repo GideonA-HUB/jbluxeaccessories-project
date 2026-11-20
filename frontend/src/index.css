@@ -2,6 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background: #ffffff;
+  --foreground: #111111;
+  --muted-foreground: #6b6b6b;
+  --card: #ffffff;
+  --card-foreground: #111111;
+  --border: #e5e5e5;
+  --ring: #000000;
+  --color-foreground: #111111;
+  --color-muted-foreground: #6b6b6b;
+  --color-background: #ffffff;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #f5f5f5;
+  --muted-foreground: #a3a3a3;
+  --card: #161616;
+  --card-foreground: #f5f5f5;
+  --border: #2a2a2a;
+  --ring: #ffffff;
+  --color-foreground: #f5f5f5;
+  --color-muted-foreground: #a3a3a3;
+  --color-background: #0a0a0a;
+}
+
+@keyframes rail-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-in.fade-in {
+  animation: rail-fade 300ms ease;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;

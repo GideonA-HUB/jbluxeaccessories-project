@@ -119,12 +119,20 @@ class WhyChooseItemAdmin(admin.ModelAdmin):
 
 @admin.register(HeroImage)
 class HeroImageAdmin(admin.ModelAdmin):
-    list_display = ['preview', 'title', 'category', 'link_url', 'order', 'is_active', 'updated_at']
+    list_display = ['preview', 'title', 'category', 'tag', 'link_url', 'order', 'is_active', 'updated_at']
     list_filter = ['is_active']
     list_editable = ['order', 'is_active', 'category', 'title']
-    search_fields = ['title', 'category', 'alt_text']
+    search_fields = ['title', 'category', 'alt_text', 'description', 'tag']
     fieldsets = (
-        (None, {'fields': ('image', 'title', 'category', 'alt_text', 'link_url')}),
+        ('Copy', {'fields': ('title', 'category', 'tag', 'description', 'details', 'alt_text', 'link_url')}),
+        ('Photos', {
+            'fields': ('image', 'back_image', 'side_image'),
+            'description': (
+                'Upload bags, jewellery, watches, shoes or any product photo. '
+                'If you add a back or side photo, use the same portrait canvas and scale as the main image '
+                'so the piece does not change size when it turns. Leave back and side empty to reuse the main photo.'
+            ),
+        }),
         ('Display', {'fields': ('order', 'is_active')}),
     )
 

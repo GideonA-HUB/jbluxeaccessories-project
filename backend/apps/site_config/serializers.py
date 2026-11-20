@@ -106,14 +106,24 @@ class NewsletterSubscriberSerializer(serializers.ModelSerializer):
 
 
 class HeroImageSerializer(serializers.ModelSerializer):
-    image = serializers.SerializerMethodField()
+    image = serializers.ImageField(required=False, allow_null=True)
+    back_image = serializers.ImageField(required=False, allow_null=True)
+    side_image = serializers.ImageField(required=False, allow_null=True)
 
     class Meta:
         model = HeroImage
-        fields = ['id', 'image', 'alt_text', 'category', 'title', 'link_url', 'order', 'is_active']
+        fields = [
+            'id', 'image', 'back_image', 'side_image', 'alt_text', 'category',
+            'title', 'description', 'tag', 'details', 'link_url', 'order', 'is_active',
+        ]
 
-    def get_image(self, obj):
-        return absolute_media_url(self.context.get('request'), obj.image)
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        request = self.context.get('request')
+        data['image'] = absolute_media_url(request, instance.image)
+        data['back_image'] = absolute_media_url(request, instance.back_image)
+        data['side_image'] = absolute_media_url(request, instance.side_image)
+        return data
 
 
 class WhyChooseItemSerializer(serializers.ModelSerializer):

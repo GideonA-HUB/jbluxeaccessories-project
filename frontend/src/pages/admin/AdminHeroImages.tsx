@@ -8,6 +8,9 @@ interface HeroImage {
   alt_text: string;
   category: string;
   title: string;
+  description?: string;
+  tag?: string;
+  details?: string;
   link_url: string;
   order: number;
   is_active: boolean;
@@ -22,6 +25,9 @@ export default function AdminHeroImages() {
   const [editForm, setEditForm] = useState({
     title: '',
     category: '',
+    tag: '',
+    description: '',
+    details: '',
     link_url: '',
     alt_text: '',
     order: 0,
@@ -96,6 +102,9 @@ export default function AdminHeroImages() {
     setEditForm({
       title: image.title || '',
       category: image.category || 'COLLECTION',
+      tag: image.tag || '',
+      description: image.description || '',
+      details: image.details || '',
       link_url: image.link_url || '/shop',
       alt_text: image.alt_text || '',
       order: image.order || 0,
@@ -126,7 +135,7 @@ export default function AdminHeroImages() {
         <div>
           <h1 className="text-2xl font-bold text-brand-black">Hero Images Management</h1>
           <p className="mt-1 text-sm text-brand-accent/60">
-            These images power the scrolling cards on the homepage hero.
+            These photos hang on the homepage rail. Use the same portrait size for front, back, and side so a piece does not jump when it turns. Leave back and side empty for jewellery, bags, and other single photos.
           </p>
         </div>
       </motion.div>
@@ -245,6 +254,27 @@ export default function AdminHeroImages() {
                       onChange={(e) => setEditForm({ ...editForm, category: e.target.value })}
                       className="w-full px-3 py-2 rounded-lg border border-brand-gray-200 text-sm outline-none focus:border-brand-pink"
                       placeholder="Category"
+                    />
+                    <input
+                      type="text"
+                      value={editForm.tag}
+                      onChange={(e) => setEditForm({ ...editForm, tag: e.target.value })}
+                      className="w-full px-3 py-2 rounded-lg border border-brand-gray-200 text-sm outline-none focus:border-brand-pink"
+                      placeholder="Hang tag, e.g. Bags"
+                    />
+                    <input
+                      type="text"
+                      value={editForm.description}
+                      onChange={(e) => setEditForm({ ...editForm, description: e.target.value })}
+                      className="w-full px-3 py-2 rounded-lg border border-brand-gray-200 text-sm outline-none focus:border-brand-pink"
+                      placeholder="Short description"
+                    />
+                    <input
+                      type="text"
+                      value={editForm.details}
+                      onChange={(e) => setEditForm({ ...editForm, details: e.target.value })}
+                      className="w-full px-3 py-2 rounded-lg border border-brand-gray-200 text-sm outline-none focus:border-brand-pink"
+                      placeholder="Details, comma separated"
                     />
                     <input
                       type="text"

@@ -278,7 +278,36 @@ class HeroImage(models.Model):
         max_length=255,
         blank=True,
         default='/shop',
-        help_text='Where the carousel card navigates when clicked',
+        help_text='Where this piece links when opened from the rail',
+    )
+    description = models.TextField(
+        blank=True,
+        default='',
+        help_text='Short line shown under the piece name on the rail',
+    )
+    tag = models.CharField(
+        max_length=40,
+        blank=True,
+        default='',
+        help_text='Small hang-tag, such as a price or a collection name',
+    )
+    details = models.CharField(
+        max_length=255,
+        blank=True,
+        default='',
+        help_text='Comma-separated facts shown in the detail view',
+    )
+    back_image = models.ImageField(
+        upload_to='hero_images/',
+        blank=True,
+        null=True,
+        help_text='Optional back photo. Use the same portrait size as the main image so the piece does not jump when it turns. Leave empty to reuse the main photo.',
+    )
+    side_image = models.ImageField(
+        upload_to='hero_images/',
+        blank=True,
+        null=True,
+        help_text='Optional side photo, same canvas and scale as the main image. Leave empty for bags, jewellery and other pieces that only have one photo.',
     )
     order = models.PositiveIntegerField(default=0)
     is_active = models.BooleanField(default=True)

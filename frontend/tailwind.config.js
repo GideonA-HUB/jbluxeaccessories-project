@@ -26,6 +26,12 @@ export default {
           border: '#2a2a2a',
           muted: '#a3a3a3',
         },
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        muted: { foreground: 'var(--muted-foreground)' },
+        card: { DEFAULT: 'var(--card)', foreground: 'var(--card-foreground)' },
+        border: 'var(--border)',
+        ring: 'var(--ring)',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
